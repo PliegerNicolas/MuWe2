@@ -10,6 +10,8 @@ class Profile < ApplicationRecord
   has_one_attached :photo
 
   def attach_default_profile_image
+    require 'open-uri'
+
     image_path = 'https://extraupdate.com/wp-content/uploads/2019/02/map_img_1138084_1501023103.jpg'
     file = URI.open(image_path)
     filename = File.basename(URI.parse(image_path).path)
