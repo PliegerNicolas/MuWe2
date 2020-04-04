@@ -3,5 +3,6 @@ class UserLanguage < ApplicationRecord
   belongs_to :language
 
   validates :mastery, presence: true
-  enum mastery: [native: 4, fluent: 3, proficient: 2, conversant: 1, basic: 0]
+
+  enum mastery: [basic: 0, conversant: 1, proficient: 2, fluent: 3, native: 4]
 end

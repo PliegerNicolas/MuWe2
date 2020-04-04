@@ -10,17 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_04_061730) do
+ActiveRecord::Schema.define(version: 2020_04_04_064753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
+    t.bigint "profile_id"
+    t.bigint "jam_id"
     t.string "address"
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["jam_id"], name: "index_addresses_on_jam_id"
+    t.index ["profile_id"], name: "index_addresses_on_profile_id"
   end
 
   create_table "chats", force: :cascade do |t|
@@ -74,7 +78,6 @@ ActiveRecord::Schema.define(version: 2020_04_04_061730) do
 
   create_table "jams", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "address_id", null: false
     t.bigint "music_style_id", null: false
     t.text "description"
     t.integer "max_participants"
@@ -84,7 +87,6 @@ ActiveRecord::Schema.define(version: 2020_04_04_061730) do
     t.boolean "privacy", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["address_id"], name: "index_jams_on_address_id"
     t.index ["music_style_id"], name: "index_jams_on_music_style_id"
     t.index ["user_id"], name: "index_jams_on_user_id"
   end
@@ -131,13 +133,11 @@ ActiveRecord::Schema.define(version: 2020_04_04_061730) do
 
   create_table "profiles", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "address_id", null: false
     t.string "last_name"
     t.date "birth_date"
     t.text "bio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["address_id"], name: "index_profiles_on_address_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -212,20 +212,20 @@ ActiveRecord::Schema.define(version: 2020_04_04_061730) do
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
+  add_foreign_key "addresses", "jams"
+  add_foreign_key "addresses", "profiles"
   add_foreign_key "chats", "jams"
   add_foreign_key "chats", "messages"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "friendships", "users"
   add_foreign_key "friendships", "users", column: "friend_id"
-  add_foreign_key "jams", "addresses"
   add_foreign_key "jams", "music_styles"
   add_foreign_key "jams", "users"
   add_foreign_key "messages", "users"
   add_foreign_key "participants", "jams"
   add_foreign_key "participants", "users"
   add_foreign_key "posts", "profiles"
-  add_foreign_key "profiles", "addresses"
   add_foreign_key "profiles", "users"
   add_foreign_key "ratings", "participants"
   add_foreign_key "ratings", "users"

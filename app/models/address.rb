@@ -1,6 +1,4 @@
 class Address < ApplicationRecord
-  has_many :profiles
-  has_many :jams
-
-  validates :address, :latitude, :longitude, presence: true
+  belongs_to :profile, optional: true
+  belongs_to :jam, optional: true
 end
