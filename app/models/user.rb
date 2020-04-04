@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :instruments, through: :user_instruments, source: :instrument
 
   has_many :user_music_styles
-  has_many :music_styles, through: :user_instruments, source: :music_style
+  has_many :music_styles, through: :user_music_styles, source: :music_style
 
   has_many :ratings
 

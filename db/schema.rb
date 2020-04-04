@@ -202,8 +202,8 @@ ActiveRecord::Schema.define(version: 2020_04_04_064753) do
 
   create_table "votes", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "post_id", null: false
-    t.bigint "comment_id", null: false
+    t.bigint "post_id"
+    t.bigint "comment_id"
     t.integer "rating", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
