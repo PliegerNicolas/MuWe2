@@ -9,8 +9,6 @@ class Profile < ApplicationRecord
   has_many :posts
   has_one_attached :photo
 
-  private
-
   def attach_default_profile_image
     image_path = 'https://extraupdate.com/wp-content/uploads/2019/02/map_img_1138084_1501023103.jpg'
     file = URI.open(image_path)
