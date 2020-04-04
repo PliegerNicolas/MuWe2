@@ -10,6 +10,7 @@ gem 'rails', '6.0.2.2'
 gem 'redis'
 
 gem 'cloudinary'
+gem 'pundit'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.12.0'
@@ -23,6 +24,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'faker'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'listen', '~> 3.0.5'

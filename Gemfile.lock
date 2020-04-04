@@ -85,6 +85,8 @@ GEM
       railties (>= 3.2, < 6.1)
     erubi (1.9.0)
     execjs (2.7.0)
+    faker (2.11.0)
+      i18n (>= 1.6, < 2)
     ffi (1.12.2)
     font-awesome-sass (5.12.0)
       sassc (>= 1.11)
@@ -132,6 +134,8 @@ GEM
       pry (>= 0.10.4)
     puma (4.3.3)
       nio4r (~> 2.0)
+    pundit (2.1.0)
+      activesupport (>= 3.0.0)
     rack (2.2.2)
     rack-proxy (0.6.5)
       rack
@@ -235,6 +239,7 @@ DEPENDENCIES
   cloudinary
   devise
   dotenv-rails
+  faker
   font-awesome-sass (~> 5.12.0)
   jbuilder (~> 2.0)
   listen (~> 3.0.5)
@@ -242,6 +247,7 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   puma
+  pundit
   rails (= 6.0.2.2)
   redis
   sassc-rails
