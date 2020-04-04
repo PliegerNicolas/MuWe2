@@ -11,6 +11,7 @@ gem 'redis'
 
 gem 'cloudinary'
 gem 'pundit'
+gem 'geocoder'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.12.0'
