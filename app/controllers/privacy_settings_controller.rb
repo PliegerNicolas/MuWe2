@@ -6,7 +6,7 @@ class PrivacySettingsController < ApplicationController
     @user_privacy_policy = cookies.permanent.signed[:user_privacy_policy] = "true"
     respond_to do |format|
       format.html { redirect_to root_path }
-      format.js
+      format.js { render 'remove_notice' }
     end
   end
 
@@ -14,7 +14,7 @@ class PrivacySettingsController < ApplicationController
     @user_privacy_policy = cookies.signed[:user_privacy_policy] = "closed"
     respond_to do |format|
       format.html { redirect_to root_path }
-      format.js
+      format.js { render 'remove_notice' }
     end
   end
 
@@ -22,7 +22,7 @@ class PrivacySettingsController < ApplicationController
     @user_privacy_policy = cookies.permanent.signed[:user_privacy_policy] = "false"
     respond_to do |format|
       format.html { redirect_to root_path }
-      format.js
+      format.js { render 'remove_notice' }
     end
   end
 
@@ -32,7 +32,7 @@ class PrivacySettingsController < ApplicationController
     @user_privacy_policy = "undefined"
     respond_to do |format|
       format.html { redirect_to root_path }
-      format.js
+      format.js { render 'add_notice' }
     end
   end
 end
