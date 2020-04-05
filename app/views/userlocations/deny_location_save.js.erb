@@ -1,12 +1,22 @@
+function removeNotice(notice) {
+  notice.remove();
+}
+
 function addNotice() {
-  const notice = document.getElementById("notice")
-  if(!notice) {
-    const new_notice = '<%= j render "shared/notice" %>'
-    const header = document.getElementsByTagName("header")[0];
-    header.insertAdjacentHTML('beforeend', new_notice);
+  const new_notice = '<%= j render "shared/notice" %>'
+  const header = document.getElementsByTagName("header")[0];
+  header.insertAdjacentHTML('beforeend', new_notice);
+}
+
+function checkIfNoticeExists() {
+  const notice = document.getElementById("notice");
+  if(notice) {
+    removeNotice(notice);
+  } else {
+    addNotice();
   }
 }
 
 <% if @profile.privacy == false %>
-  addNotice();
+  checkIfNoticeExists();
 <% end %>
