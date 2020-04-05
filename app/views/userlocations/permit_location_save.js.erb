@@ -1,8 +1,0 @@
-function removeNotice() {
-  const notice = document.getElementById("notice")
-  notice.remove();
-}
-
-<% if @profile.privacy == true %>
-  removeNotice();
-<% end %>
