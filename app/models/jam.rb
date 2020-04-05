@@ -8,5 +8,5 @@ class Jam < ApplicationRecord
 
   validates :max_participants, :status, :start_date_time, :duration, presence: true
 
-  enum status: [pending: 0, ongoing: 1, finished: 2]
+  enum status: { pending: 0, ongoing: 1, finished: 2 }
 end

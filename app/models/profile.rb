@@ -1,6 +1,5 @@
 class Profile < ApplicationRecord
   after_create :attach_default_profile_photo
-  after_validation :geocode
 
   belongs_to :user
   has_one :address
