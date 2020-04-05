@@ -5,7 +5,6 @@ class CreateProfiles < ActiveRecord::Migration[6.0]
       t.string :last_name
       t.date :birth_date
       t.text :bio
-      t.boolean :privacy, default: false
 
       t.timestamps
     end

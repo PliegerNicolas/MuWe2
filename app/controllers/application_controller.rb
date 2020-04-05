@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :user_last_activity_timer
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :store_user_location!, if: :storable_location?
+  before_action :get_user_privacy_cookie
   include Pundit
 
   # Pundit: white-list approach.
@@ -47,5 +48,11 @@ class ApplicationController < ActionController::Base
 
   def store_user_location!
     store_location_for(:user, request.fullpath)
+  end
+
+  # Set variable for cookie privacy settings
+
+  def get_user_privacy_cookie
+    @user_privacy_policy = cookies.signed[:user_privacy_policy]
   end
 end

@@ -1,0 +1,9 @@
+function addNotice(new_notice)  {
+  const notice = document.getElementById("notice");
+  if(!notice) {
+    const header = document.getElementsByTagName("header")[0];
+    header.insertAdjacentHTML('beforeend', new_notice);
+  }
+}
+
+addNotice('<%= j render "privacy_settings/notice" %>');

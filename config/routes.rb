@@ -2,6 +2,13 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'jams#index'
 
+  # User privacy settings
+
+  get 'close_notice', to: 'privacy_settings#close_notice', as: :close_privacy_cookie_notice
+  get 'accept_privacy_cookie', to: 'privacy_settings#accept_privacy_cookie', as: :accept_privacy_cookie
+  get 'deny_privacy_cookie', to: 'privacy_settings#deny_privacy_cookie', as: :deny_privacy_cookie
+  get 'reset_privacy_cookie', to: 'privacy_settings#reset_privacy_cookie', as: :reset_privacy_cookie
+
   # Error pages
 
   get '404', to: 'errors#not_found'
