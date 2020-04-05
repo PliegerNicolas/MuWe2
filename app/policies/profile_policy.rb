@@ -4,12 +4,4 @@ class ProfilePolicy < ApplicationPolicy
       scope.all
     end
   end
-
-  def permit_location_save?
-    record == user.profile
-  end
-
-  def deny_location_save?
-    record == user.profile
-  end
 end
