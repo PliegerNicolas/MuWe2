@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   # Permissions for saving User location
 
-  get 'location', to: 'userlocations#permit_location_save', as: :permit_location_save
-  get 'location', to: 'userlocations#deny_location_save', as: :deny_location_save
+  get 'accept_location_save', to: 'userlocations#permit_location_save', as: :permit_location_save
+  get 'deny_location_save', to: 'userlocations#deny_location_save', as: :deny_location_save
 
   # Error pages
 
