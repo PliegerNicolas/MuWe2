@@ -7,9 +7,5 @@
       <%= link_to "Sign up", new_user_registration_path %>
     <% end %>
   </nav>
-  <% if user_signed_in? && current_user.profile.privacy == false %>
-    <div id="notice">
-      <p>Yo this is a notice for you to give permission to saving your location in DB</p>
-    </div>
-  <% end %>
+  <%= render "shared/notice" %>
 </header>

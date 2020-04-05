@@ -1,0 +1,6 @@
+  <% if user_signed_in? && current_user.profile.privacy == false %>
+    <div id="notice">
+      <p>Yo this is a notice for you to give permission to saving your location in DB</p>
+      <%= link_to "save user location test", permit_location_save_path, remote: true %>
+    </div>
+  <% end %>

@@ -15,7 +15,10 @@ module MuWe2
         end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
-    config.exceptions_app = self.routes
+
+    config.exceptions_app = self.routes # permitting redirects to custom error pages
+
+    config.action_view.embed_authenticity_token_in_remote_forms = true # Authenticity tokens ajax
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

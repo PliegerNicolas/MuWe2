@@ -5,9 +5,17 @@ class UserlocationsController < ApplicationController
     @profile = current_user.profile
     @profile.privacy = true
     authorize @profile
-    @profile.save
-
-    redirect_to root_path # Should become AJAX
+    if @profile.save
+      respond_to do |format|
+        format.html { redirect_to root_path } # Should become profile_path
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to root_path } # Should become profile_path
+        format.js
+      end
+    end
   end
 
   def deny_location_save
@@ -16,8 +24,16 @@ class UserlocationsController < ApplicationController
     @profile = current_user.profile
     @profile.privacy = false
     authorize @profile
-    @profile.save
-
-    redirect_to root_path # Should become AJAX
+    if @profile.save
+      respond_to do |format|
+        format.html { redirect_to root_path } # Should become profile_path
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to root_path } # Should become profile_path
+        format.js
+      end
+    end
   end
 end
