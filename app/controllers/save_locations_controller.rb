@@ -19,7 +19,7 @@ class SaveLocationsController < ApplicationController
       if @address.save
         respond_to do |format|
           format.html { redirect_to root_path }
-          format.json
+          format.json { render :json => {:message => "Success"} }
         end
       end
     else
@@ -28,7 +28,7 @@ class SaveLocationsController < ApplicationController
       if @address.save
         respond_to do |format|
           format.html { redirect_to root_path }
-          format.json
+          format.json { render :json => {:message => "Success"} }
         end
       end
     end
