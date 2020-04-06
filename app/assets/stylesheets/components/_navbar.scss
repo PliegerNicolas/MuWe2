@@ -1,12 +1,14 @@
 header {
   position: fixed;
   width: 100%;
-  z-index: 999;
+  z-index: 997;
 }
 
 nav {
+  position: relative;
   height: 80px; // nav height
   background-color: $muwe-black-dark;
+  z-index: 999;
 }
 
 #notice {
@@ -14,5 +16,5 @@ nav {
   background-color: $muwe-brand-green;
   top: 0; // animated
   width: 100%;
-  z-index: 998
+  z-index: 998;
 }
