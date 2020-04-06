@@ -30,9 +30,7 @@ const saveUserLocation = (pos) => {
   const docCookie = document.cookie
   const cookieValue = docCookie.split("=")[1];
   if(cookieValue == "true") {
-    // Ajax Get
-    console.log("create ajax get");
-    console.log(pos);
+    // AJAX get request => save user's location if cookie found
     fetch("/save_location", {
       method: "POST",
       headers: {
