@@ -26,14 +26,28 @@ const createMap = (pos) => {
   }
 }
 
-const geolocate = new mapboxgl.GeolocateControl({
-  positionOptions: {
-    enableHighAccuracy: true
-  },
-    trackUserLocation: true,
-    showAccuracyCircle: false,
+const saveUserLocation = (pos) => {
+  const docCookie = document.cookie
+  const cookieValue = docCookie.split("=")[1];
+  if(cookieValue == "true") {
+    // AJAX get request => save user's location if cookie found
+    fetch("/save_location", {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        lat: pos.lat,
+        lng: pos.lng
+      })
+    })
   }
-);
+}
+
+/* ==================== */
+      /*executable*/
+/* ==================== */
 
 if("geolocation" in navigator) {
   // geolocation permitted
@@ -46,12 +60,22 @@ if("geolocation" in navigator) {
 
     // Actions
 
-    createMap(initUserPos);
-    console.log(map);
+    saveUserLocation(initUserPos); // Save user location if cookie is there
 
-    map.addControl(geolocate);
+    createMap(initUserPos);
+
+    const geolocate = new mapboxgl.GeolocateControl({ // Create mapbox geolocate method
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+        trackUserLocation: true,
+        showAccuracyCircle: false,
+      }
+    );
+
+    map.addControl(geolocate); // Add geolocate method to map
     map.on('load', () => {
-      geolocate.trigger();
+      geolocate.trigger(); // trigger geolocation on page load
     })
 
   }, function(error) { // Fallback method if localisation denied by user
