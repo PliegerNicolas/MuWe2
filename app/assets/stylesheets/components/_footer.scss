@@ -1,6 +1,14 @@
 footer {
   background-color: $muwe-black;
   color: $muwe-pure-white;
+  position: absolute;
+  height: 200px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  p {
+    margin: 0;
+  }
 }
 
 .footer-bottom {
