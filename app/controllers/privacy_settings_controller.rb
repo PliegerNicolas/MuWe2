@@ -19,7 +19,7 @@ class PrivacySettingsController < ApplicationController
   end
 
   def deny_privacy_cookie
-    Address.destroy(current_user.profile.address) if user_signed_in?
+    Address.destroy(current_user.profile.address.id) if user_signed_in? && current_user.profile.address
     @user_privacy_policy = cookies.permanent[:user_privacy_policy] = "false"
     respond_to do |format|
       format.html { redirect_to root_path }
@@ -30,7 +30,7 @@ class PrivacySettingsController < ApplicationController
   def reset_privacy_cookie
     # Delete cookie user_privacy_policy a.k.a set it to false
     cookies.delete :user_privacy_policy
-    Address.destroy(current_user.profile.address) if user_signed_in?
+    Address.destroy(current_user.profile.address.id) if user_signed_in? && current_user.profile.address
     @user_privacy_policy = "undefined"
     respond_to do |format|
       format.html { redirect_to root_path }
