@@ -53,6 +53,6 @@ class ApplicationController < ActionController::Base
   # Set variable for cookie privacy settings
 
   def get_user_privacy_cookie
-    @user_privacy_policy = cookies.signed[:user_privacy_policy]
+    @user_privacy_policy = cookies[:user_privacy_policy]
   end
 end
