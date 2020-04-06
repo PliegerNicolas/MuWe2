@@ -11,7 +11,7 @@ class PrivacySettingsController < ApplicationController
   end
 
   def close_notice
-    @user_privacy_policy = cookies.signed[:user_privacy_policy] = "closed"
+    @user_privacy_policy = cookies.permanent.signed[:user_privacy_policy] = "closed"
     respond_to do |format|
       format.html { redirect_to root_path }
       format.js { render 'remove_notice' }
