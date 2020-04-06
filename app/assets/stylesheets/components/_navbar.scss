@@ -1,7 +1,7 @@
 header {
   position: fixed;
   width: 100%;
-  z-index: 1;
+  z-index: 999;
 }
 
 nav {
@@ -14,4 +14,5 @@ nav {
   background-color: $muwe-brand-green;
   top: 0; // animated
   width: 100%;
+  z-index: 998
 }
