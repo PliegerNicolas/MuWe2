@@ -3,7 +3,7 @@ class PrivacySettingsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def accept_privacy_cookie
-    @user_privacy_policy = cookies.permanent.signed[:user_privacy_policy] = "true"
+    @user_privacy_policy = cookies.permanent[:user_privacy_policy] = "true"
     respond_to do |format|
       format.html { redirect_to root_path }
       format.js { render 'remove_notice' }
@@ -11,7 +11,7 @@ class PrivacySettingsController < ApplicationController
   end
 
   def close_notice
-    @user_privacy_policy = cookies.permanent.signed[:user_privacy_policy] = "closed"
+    @user_privacy_policy = cookies[:user_privacy_policy] = "closed"
     respond_to do |format|
       format.html { redirect_to root_path }
       format.js { render 'remove_notice' }
@@ -19,7 +19,7 @@ class PrivacySettingsController < ApplicationController
   end
 
   def deny_privacy_cookie
-    @user_privacy_policy = cookies.permanent.signed[:user_privacy_policy] = "false"
+    @user_privacy_policy = cookies.permanent[:user_privacy_policy] = "false"
     respond_to do |format|
       format.html { redirect_to root_path }
       format.js { render 'remove_notice' }
