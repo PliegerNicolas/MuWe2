@@ -1,10 +1,10 @@
 {
-    "master_picture": "app/assets/images/favicon.png",
+    "master_picture": "app/assets/images/muwe-favicon.svg",
     "favicon_design": {
         "ios": {
             "picture_aspect": "background_and_margin",
-            "background_color": "#2b2b2d",
-            "margin": "21%",
+            "background_color": "#ecfdfc",
+            "margin": "14%",
             "assets": {
                 "ios6_and_prior_icons": false,
                 "ios7_and_later_icons": false,
@@ -18,7 +18,7 @@
         },
         "windows": {
             "picture_aspect": "no_change",
-            "background_color": "#2b2b2d",
+            "background_color": "#ecfdfc",
             "on_conflict": "override",
             "assets": {
                 "windows_80_ie_10_tile": false,
@@ -32,8 +32,8 @@
             "app_name": "MuWe"
         },
         "android_chrome": {
-            "picture_aspect": "no_change",
-            "theme_color": "#2b2b2d",
+            "picture_aspect": "shadow",
+            "theme_color": "#ecfdfc",
             "manifest": {
                 "name": "MuWe",
                 "display": "standalone",
@@ -48,11 +48,10 @@
         },
         "safari_pinned_tab": {
             "picture_aspect": "silhouette",
-            "theme_color": "#2b2b2d"
+            "theme_color": "#00c6c2"
         }
     },
     "settings": {
-        "compression": 3,
         "scaling_algorithm": "Mitchell",
         "error_on_image_too_small": false,
         "readme_file": false,
