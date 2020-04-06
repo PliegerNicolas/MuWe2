@@ -1,8 +1,22 @@
 footer {
   background-color: $muwe-black;
   color: $muwe-pure-white;
-}
+  position: absolute;
+  height: 250px; // footer height
+  right: 0;
+  bottom: 0;
+  left: 0;
 
-.footer-bottom {
+  p {
+    margin: 0;
+  }
+
+  .footer-upper {
+  height: 90%;
+  }
+
+  .footer-lower {
+    height: 10%;
   background-color: $muwe-brand-green;
+}
 }

@@ -14,14 +14,11 @@ function animateNotice(notice) {
   );
 }
 
-function addNotice(new_notice)  {
+function noticeDropdown() {
   const notice = document.getElementById("notice");
-  if(!notice) {
-    const header = document.getElementsByTagName("header")[0];
-    header.insertAdjacentHTML('beforeend', new_notice);
-    const notice = document.getElementById("notice");
+  if(notice) {
     animateNotice(notice);
   }
 }
 
-addNotice('<%= j render "privacy_settings/notice" %>');
+noticeDropdown();

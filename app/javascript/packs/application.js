@@ -5,3 +5,4 @@ require("channels")
 import "bootstrap";
 
 require("packs/init_mapbox.js")
+require("packs/notice.js")

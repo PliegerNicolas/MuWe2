@@ -1,4 +1,20 @@
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 997;
+}
+
 nav {
-  height: 5em;
+  position: relative;
+  height: 80px; // nav height
   background-color: $muwe-black-dark;
+  z-index: 999;
+}
+
+#notice {
+  position: absolute;
+  background-color: $muwe-brand-green;
+  top: 0; // animated
+  width: 100%;
+  z-index: 998;
 }
