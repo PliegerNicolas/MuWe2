@@ -11,14 +11,14 @@ const createMap = (pos) => {
     if(pos) {
       map = new mapboxgl.Map({ // Create mapbox map on user location
         container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v10',
+        style: 'mapbox://styles/aetherys/ck8pnp50b0j4j1jn3mbtr97la',
         center: [pos.lng, pos.lat],
         zoom: 7
       });
     } else {
       map = new mapboxgl.Map({ // Create mapbox map on default location
         container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v10',
+        style: 'mapbox://styles/aetherys/ck8pnp50b0j4j1jn3mbtr97la',
         center: [-7.8536599, 39.557191],
         zoom: 7
       });
