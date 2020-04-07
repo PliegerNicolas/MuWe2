@@ -13,10 +13,16 @@ class JamsController < ApplicationController
     @jam = Jam.new(jam_params)
     @jam.user = current_user
     authorize @jam
+    if @jam.save
+      redirect_to jam_path(@jam.id)
+    else
+      render :new
+    end
   end
 
   def show
-
+    @jam = Jam.find(params[:id])
+    authorize @jam
   end
 
   def edit
