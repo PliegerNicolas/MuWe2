@@ -3,3 +3,5 @@
 <%= @jam.description %>
 
 <%= link_to "Edit", edit_jam_path(@jam.id) %>
+<%= link_to "Archive", archive_jam_path(@jam.id) %>
+<%= link_to "Delete", jam_path(@jam.id), method: "delete" %>

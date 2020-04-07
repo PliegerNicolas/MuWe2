@@ -37,8 +37,20 @@ class JamsController < ApplicationController
     end
   end
 
-  def destroy
+  def archive
+    set_jam
+    @jam.finished!
+    if @jam.save
+      redirect_to root_path
+    else
+      redirect_to jam_path(@jam.id)
+    end
+  end
 
+  def destroy
+    set_jam
+    @jam.destroy!
+    redirect_to root_path
   end
 
   private

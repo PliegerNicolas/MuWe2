@@ -4,7 +4,7 @@ class Jam < ApplicationRecord
   belongs_to :user
   has_one :address
   belongs_to :music_style, optional: true
-  has_many :participants
+  has_many :participants, dependent: :destroy
   has_one :chat
   has_one_attached :photo
 
