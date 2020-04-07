@@ -1,3 +1,5 @@
 <%= @jam.user.full_name %>
 <%= image_tag @jam.photo, height: "100px", width: "100px" %>
 <%= @jam.description %>
+
+<%= link_to "Edit", edit_jam_path(@jam.id) %>

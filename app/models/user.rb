@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :ratings
 
   has_many :participants
-  has_many :jam_participations, through: :participants, source: :jam # Events the user is participating in
+  has_many :jam_participations, through: :participants, source: :jam # jams the user is participating in
 
   has_many :votes
 
@@ -45,13 +45,13 @@ class User < ApplicationRecord
 
   def non_host_jam_participations
     # Jams where you're participating in without being host
-    # (A User is forced to participate to the event as spectator or player to manage the group)
+    # (A User is forced to participate to the jam as spectator or player to manage the group)
     jam_participations.where.not(user: self)
   end
 
   def host_jam_participations
     # Jam where you're the host and participating
-    # (A User is forced to participate to the event as spectator or player to manage the group)
+    # (A User is forced to participate to the jam as spectator or player to manage the group)
     jam_participations.where(user: self)
   end
 

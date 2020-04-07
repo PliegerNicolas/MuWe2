@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 2020_04_04_075137) do
     t.integer "max_participants"
     t.integer "status", default: 0
     t.datetime "start_date_time"
-    t.integer "duration"
+    t.time "duration"
     t.boolean "privacy", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
