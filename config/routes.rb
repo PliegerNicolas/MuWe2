@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'jams#index'
 
+  resources :jams
+
   # User privacy settings
 
   get 'close_notice', to: 'privacy_settings#close_notice', as: :close_privacy_cookie_notice
