@@ -12,6 +12,7 @@ class JamsController < ApplicationController
   def create
     @jam = Jam.new(jam_params)
     @jam.user = current_user
+    set_duration(params[:jam]["duration(4i)"], params[:jam]["duration(5i)"])
     authorize @jam
     if @jam.save
       redirect_to jam_path(@jam.id)
@@ -40,6 +41,11 @@ class JamsController < ApplicationController
   private
 
   def jam_params
-    params.require(:jam).permit(:user_id, :music_style_id, :description, :max_participations, :status, :start_date_time, :duration, :privacy)
+    params.require(:jam).permit(:user_id, :music_style_id, :description, :max_participants, :status, :start_date_time, :duration, :privacy, :photo)
+  end
+
+  def set_duration(hour, seconds)
+    duration = Time.parse("#{hour}:#{seconds}").seconds_since_midnight.to_i
+    @jam.duration = duration
   end
 end
