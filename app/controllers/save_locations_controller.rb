@@ -5,14 +5,13 @@ class SaveLocationsController < ApplicationController
 
     lat = params[:lat]
     lng = params[:lng]
-    readable_address = Geocoder.search([lat, lng]).first.address
 
-    @address = current_user.profile.address
-
-    if @address
+    if current_user.profile.address
+      @address = current_user.profile.address
       authorize @address
       return unless @address.latitude != lat && @address.longitude != lng
 
+      readable_address = Geocoder.search([lat, lng]).first.address
       @address.address = readable_address
       @address.latitude = lat
       @address.longitude = lng
@@ -23,6 +22,7 @@ class SaveLocationsController < ApplicationController
         end
       end
     else
+      readable_address = Geocoder.search([lat, lng]).first.address
       @address = Address.new(profile: current_user.profile, address: readable_address, latitude: lat, longitude: lng)
       authorize @address
       if @address.save
