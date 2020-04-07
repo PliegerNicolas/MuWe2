@@ -1,0 +1,9 @@
+<%= simple_form_for @jam do |f| %>
+  <%= f.input :description %>
+  <%= f.input :photo %>
+  <%= f.association :music_style, label_method: :music_style %>
+  <%= f.input :max_participants, collection: 2..16 %>
+  <%= f.input :start_date_time %>
+  <%= f.input :duration, as: :time %>
+  <%= f.input :privacy %>
+<% end %>
