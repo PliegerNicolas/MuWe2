@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'jams#index'
 
+  get 'jam/:id', to: 'jams#archive', as: :archive_jam
   resources :jams
 
   # User privacy settings

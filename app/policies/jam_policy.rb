@@ -25,6 +25,10 @@ class JamPolicy < ApplicationPolicy
     record.user == user
   end
 
+  def archive?
+    record.user == user
+  end
+
   def destroy?
     record.user == user
   end
