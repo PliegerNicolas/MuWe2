@@ -44,6 +44,11 @@ if("geolocation" in navigator) {
 
     createMap(initUserPos);
 
+    map.on('click', function(event) {
+      var clickCoords = event.lngLat;
+      console.log(clickCoords);
+    });
+
   }, function(error) { // Fallback method if localisation denied by user
       if (error.code == error.PERMISSION_DENIED)
       createMap(initUserPos);
