@@ -12,6 +12,6 @@ class Profile < ApplicationRecord
     image_path = 'https://extraupdate.com/wp-content/uploads/2019/02/map_img_1138084_1501023103.jpg'
     file = URI.open(image_path)
     filename = File.basename(URI.parse(image_path).path)
-    self.photo.attach(io: file, filename: filename)
+    photo.attach(io: file, filename: filename)
   end
 end

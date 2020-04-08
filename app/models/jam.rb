@@ -8,7 +8,7 @@ class Jam < ApplicationRecord
   has_one :chat
   has_one_attached :photo
 
-  validates :max_participants, :status, :start_date_time, :duration, :music_style, :address, presence: true
+  validates :max_participants, :status, :start_date_time, :duration, :music_style, presence: true
 
   enum status: { pending: 0, ongoing: 1, finished: 2 }
 
