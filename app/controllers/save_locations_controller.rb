@@ -1,7 +1,12 @@
 class SaveLocationsController < ApplicationController
   skip_before_action :verify_authenticity_token
+  skip_before_action :authenticate_user!
+
   def save_location
-    return unless user_signed_in?
+    unless user_signed_in?
+      skip_authorization
+      return
+    end
 
     lat = params[:lat]
     lng = params[:lng]
