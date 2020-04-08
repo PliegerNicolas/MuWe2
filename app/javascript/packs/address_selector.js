@@ -46,12 +46,13 @@ if("geolocation" in navigator) {
 
     map.on('click', function(event) {
       var clickCoords = event.lngLat;
-      console.log(clickCoords);
+      const addressField = document.getElementById("jam_address");
+      addressField.value = `${clickCoords.lat} ${clickCoords.lng}`
     });
 
   }, function(error) { // Fallback method if localisation denied by user
       if (error.code == error.PERMISSION_DENIED)
-      createMap(initUserPos);
+      createMap();
     }
   );
 } else {
