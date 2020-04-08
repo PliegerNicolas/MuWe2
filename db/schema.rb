@@ -39,7 +39,11 @@ ActiveRecord::Schema.define(version: 2020_04_04_075137) do
   create_table "addresses", force: :cascade do |t|
     t.bigint "profile_id"
     t.bigint "jam_id"
-    t.string "address"
+    t.string "given_address"
+    t.string "street"
+    t.string "postal_code"
+    t.string "city"
+    t.string "country"
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", precision: 6, null: false

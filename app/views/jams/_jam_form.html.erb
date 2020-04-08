@@ -6,9 +6,12 @@
   <%= f.input :start_date_time %>
   <%= f.input :duration, as: :time %>
   <%= f.input :privacy %>
+  <%= f.input :address %>
   <%= f.submit %>
 <% end %>
 
 <img src="" id="photo_output">
+<div class="small-map" id="map" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
 <%= javascript_pack_tag 'image_previewer' %>
+<%= javascript_pack_tag 'address_selector' %>
