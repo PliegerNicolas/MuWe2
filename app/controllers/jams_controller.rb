@@ -12,6 +12,8 @@ class JamsController < ApplicationController
   def create
     @jam = Jam.new(jam_params)
     @jam.user = current_user
+    set_address
+    raise
     authorize @jam
     if @jam.save
       redirect_to jam_path(@jam.id)
@@ -72,5 +74,19 @@ class JamsController < ApplicationController
   def set_jam
     @jam = Jam.find(params[:id])
     authorize @jam
+  end
+
+  def set_address
+    return unless params[:jam][:address]
+
+    address = params[:jam][:address]
+    if address =~ /^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)\s[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$/
+      coords = address.split(/\s/)
+      @address = Address.new(profile: current_user.profile, jam: @jam, latitude: coords[0], longitude: coords[1])
+      address = Geocoder.search(coords).first
+      address = "#{address.street}, #{address.postal_code}, #{address.city}, #{address.country}"
+      # Working here need to create object address
+      raise
+    end
   end
 end
