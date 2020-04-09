@@ -24,4 +24,8 @@ class Jam < ApplicationRecord
     filename = File.basename(URI.parse(image_path).path)
     photo.attach(io: file, filename: filename) unless self.photo.attachment
   end
+
+  def count_participants
+    participants.count
+  end
 end

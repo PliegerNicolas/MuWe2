@@ -3,7 +3,10 @@ class SearchsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    byebug
     @jams = policy_scope(Jam)
+
+    render json: {
+      jams: @jams.as_json(include: { user: { only:  [:first_name] }, music_style: { only: :music_style }, participants: {} } )
+    }
   end
 end
