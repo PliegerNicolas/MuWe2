@@ -6,7 +6,7 @@ class SearchsController < ApplicationController
     @jams = policy_scope(Jam)
 
     render json: {
-      jams: @jams.as_json(include: { user: { only:  [:first_name] }, music_style: { only: :music_style }, participants: {} } )
+      jams: @jams.as_json(include: { user: { only:  [:first_name], methods: :full_name }, music_style: { only: :music_style }, participants: {} } )
     }
   end
 end
