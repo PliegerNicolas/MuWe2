@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   get 'jam/:id', to: 'jams#archive', as: :archive_jam
   resources :jams
 
+  # Search for events => Map
+
+  get 'search', to: 'searchs#index', as: :search_events
+
   # User privacy settings
 
   get 'close_notice', to: 'privacy_settings#close_notice', as: :close_privacy_cookie_notice
