@@ -30,16 +30,6 @@ class SaveLocationsController < ApplicationController
           format.json { render :json => {:message => "Success"} }
         end
       end
-    else
-      readable_address = Geocoder.search([lat, lng]).first.address
-      @address = Address.new(profile: current_user.profile, address: readable_address, latitude: lat, longitude: lng)
-      authorize @address
-      if @address.save
-        respond_to do |format|
-          format.html { redirect_to root_path }
-          format.json { render :json => {:message => "Success"} }
-        end
-      end
     end
   end
 end

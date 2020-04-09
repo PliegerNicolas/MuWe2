@@ -45,6 +45,14 @@ const saveUserLocation = (pos) => {
   }
 }
 
+const getJams = () => {
+  const mapCenter = map.getCenter();
+  const mapBounds = map.getBounds();
+  const swBound = mapBounds._sw
+  const neBound = mapBounds._ne
+  console.log(neBound);
+}
+
 /* ==================== */
       /*executable*/
 /* ==================== */

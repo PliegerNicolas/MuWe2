@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   get 'deny_privacy_cookie', to: 'privacy_settings#deny_privacy_cookie', as: :deny_privacy_cookie
   get 'reset_privacy_cookie', to: 'privacy_settings#reset_privacy_cookie', as: :reset_privacy_cookie
 
+  # Search for events => Map
+
+  get 'search', to: 'searchs#index', as: :search_events
+
   # Save user position
 
   post 'save_location', to: 'save_locations#save_location', as: :save_location
