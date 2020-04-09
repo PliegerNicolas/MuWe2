@@ -48,9 +48,21 @@ const saveUserLocation = (pos) => {
 const getJams = () => {
   const mapCenter = map.getCenter();
   const mapBounds = map.getBounds();
-  const swBound = mapBounds._sw
-  const neBound = mapBounds._ne
-  console.log(neBound);
+  console.log("------");
+  fetch("/search", {
+    method: "POST",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      map_center: mapCenter,
+      max_lat: mapBounds._ne.lat,
+      min_lat: mapBounds._sw.lat,
+      max_lng: mapBounds._ne.lng,
+      min_lng: mapBounds._sw.lng
+    })
+  })
 }
 
 /* ==================== */
@@ -85,6 +97,8 @@ if("geolocation" in navigator) {
     map.on('load', () => {
       geolocate.trigger(); // trigger geolocation on page load
     })
+
+    getJams();
 
   }, function(error) { // Fallback method if localisation denied by user
       if (error.code == error.PERMISSION_DENIED)
