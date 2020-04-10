@@ -111,7 +111,9 @@ if("geolocation" in navigator) {
       geolocate.trigger(); // trigger geolocation on page load
     })
 
-    getJams();
+    map.on('moveend', () => {
+      getJams();
+    })
 
   }, function(error) { // Fallback method if localisation denied by user
       if (error.code == error.PERMISSION_DENIED)
