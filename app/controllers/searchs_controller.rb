@@ -4,10 +4,17 @@ class SearchsController < ApplicationController
   def index
     @jams = policy_scope(Jam)
 
-    jam_cards = render_to_string @jams
-
-    render json: {
-      jams: @jams.as_json(include: { user: { only:  [:first_name], methods: :full_name }, music_style: { only: :music_style }, participants: {} } )
-    }
+    respond_to do |format|
+      format.json do |f|
+        render json: {
+          jams: render_to_string(
+            partial: 'jams/jam',
+            formats: :html,
+            layout: false,
+            locals: { jams: @jams }
+          )
+        }
+      end
+    end
   end
 end

@@ -1,3 +1,4 @@
+<% jams.each do |jam| %>
 <div class="jam-card">
   <%= image_tag jam.photo %>
   <%= jam.status %>
@@ -6,3 +7,4 @@
   <%= display_date(jam.start_date_time, jam.duration) %>
   <%= jam.participants.count %>/<%= jam.max_participants %>
 </div>
+<% end %>

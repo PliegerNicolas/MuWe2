@@ -51,10 +51,10 @@ const getJams = () => {
   const mapCenter = map.getCenter();
   const mapBounds = map.getBounds();
   const token = document.getElementsByName("csrf-token")[0].content
-  console.log(token);
-  fetch("/search", {
+  fetch(window.location.origin + "/search", {
     method: "POST",
     headers: {
+      'Content-Type': 'application/json',
       'X-CSRF-Token': token
     },
     body: JSON.stringify({
@@ -63,13 +63,15 @@ const getJams = () => {
       min_lat: mapBounds._sw.lat,
       max_lng: mapBounds._ne.lng,
       min_lng: mapBounds._sw.lng
-    })
+    }),
+    credentials: "same-origin"
   })
   .then(function(response) {
     return response.json();
   })
   .then(function(data) {
     console.log(data);
+    document.getElementById("jams").innerHTML = data.jams;
   })
 }
 
