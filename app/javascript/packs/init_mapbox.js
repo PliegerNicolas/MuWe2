@@ -13,14 +13,18 @@ const createMap = (pos) => {
         container: 'map',
         style: 'mapbox://styles/aetherys/ck8pnp50b0j4j1jn3mbtr97la',
         center: [pos.lng, pos.lat],
-        zoom: 7
+        zoom: 7,
+        minZoom: 4,
+        maxPitch: 0
       });
     } else {
       map = new mapboxgl.Map({ // Create mapbox map on default location
         container: 'map',
         style: 'mapbox://styles/aetherys/ck8pnp50b0j4j1jn3mbtr97la',
         center: [-7.8536599, 39.557191],
-        zoom: 7
+        zoom: 7,
+        minZoom: 4,
+        maxPitch: 0
       });
     }
   }
