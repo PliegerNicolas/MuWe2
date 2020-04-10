@@ -23,7 +23,7 @@ class SearchsController < ApplicationController
             layout: false,
             locals: { jams: @jams }
           ),
-          event_coords: @markers
+          jam_coords: @markers
         }
       end
     end
