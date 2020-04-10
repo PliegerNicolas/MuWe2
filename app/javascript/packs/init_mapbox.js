@@ -70,7 +70,6 @@ const getJams = () => {
     return response.json();
   })
   .then(function(data) {
-    console.log(data);
     document.getElementById("jams").innerHTML = data.jams;
   })
 }
