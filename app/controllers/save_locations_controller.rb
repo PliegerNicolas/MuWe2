@@ -1,5 +1,4 @@
 class SaveLocationsController < ApplicationController
-  skip_before_action :verify_authenticity_token
   skip_before_action :authenticate_user!
 
   def save_location
@@ -24,16 +23,6 @@ class SaveLocationsController < ApplicationController
       @address.street = found_address.street
       @address.latitude = lat
       @address.longitude = lng
-      if @address.save
-        respond_to do |format|
-          format.html { redirect_to root_path }
-          format.json { render :json => {:message => "Success"} }
-        end
-      end
-    else
-      readable_address = Geocoder.search([lat, lng]).first.address
-      @address = Address.new(profile: current_user.profile, address: readable_address, latitude: lat, longitude: lng)
-      authorize @address
       if @address.save
         respond_to do |format|
           format.html { redirect_to root_path }

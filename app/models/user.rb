@@ -87,6 +87,7 @@ class User < ApplicationRecord
   private
 
   def create_profile
-    Profile.create!(user_id: User.last.id)
+    profile = Profile.create!(user_id: User.last.id)
+    Address.create!(profile_id: profile.id)
   end
 end

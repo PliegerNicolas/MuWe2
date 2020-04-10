@@ -31,11 +31,13 @@ const saveUserLocation = (pos) => {
   const cookieValue = docCookie.split("=")[1];
   if(cookieValue == "true") {
     // AJAX get request => save user's location if cookie found
+    const token = document.getElementsByName("csrf-token")[0].content
     fetch("/save_location", {
       method: "POST",
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': token
       },
       body: JSON.stringify({
         lat: pos.lat,
@@ -43,6 +45,33 @@ const saveUserLocation = (pos) => {
       })
     })
   }
+}
+
+const getJams = () => {
+  const mapCenter = map.getCenter();
+  const mapBounds = map.getBounds();
+  const token = document.getElementsByName("csrf-token")[0].content
+  fetch(window.location.origin + "/search", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': token
+    },
+    body: JSON.stringify({
+      map_center: mapCenter,
+      max_lat: mapBounds._ne.lat,
+      min_lat: mapBounds._sw.lat,
+      max_lng: mapBounds._ne.lng,
+      min_lng: mapBounds._sw.lng
+    }),
+    credentials: "same-origin"
+  })
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(data) {
+    document.getElementById("jams").innerHTML = data.jams;
+  })
 }
 
 /* ==================== */
@@ -77,6 +106,8 @@ if("geolocation" in navigator) {
     map.on('load', () => {
       geolocate.trigger(); // trigger geolocation on page load
     })
+
+    getJams();
 
   }, function(error) { // Fallback method if localisation denied by user
       if (error.code == error.PERMISSION_DENIED)

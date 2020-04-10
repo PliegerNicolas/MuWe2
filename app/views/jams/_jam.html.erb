@@ -1,0 +1,10 @@
+<% jams.each do |jam| %>
+<div class="jam-card">
+  <%= image_tag jam.photo %>
+  <%= jam.status %>
+  <%= jam.user.first_name %>
+  <%= jam.music_style.music_style %>
+  <%= display_date(jam.start_date_time, jam.duration) %>
+  <%= jam.participants.count %>/<%= jam.max_participants %>
+</div>
+<% end %>
