@@ -1,6 +1,5 @@
 import mapboxgl from 'mapbox-gl';
 // import 'mapbox-gl/dist/mapbox-gl.css';
-import moment from 'moment';
 
 let map;
 let initUserPos;
@@ -32,11 +31,13 @@ const saveUserLocation = (pos) => {
   const cookieValue = docCookie.split("=")[1];
   if(cookieValue == "true") {
     // AJAX get request => save user's location if cookie found
+    const token = document.getElementsByName("csrf-token")[0].content
     fetch("/save_location", {
       method: "POST",
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': token
       },
       body: JSON.stringify({
         lat: pos.lat,
@@ -46,42 +47,15 @@ const saveUserLocation = (pos) => {
   }
 }
 
-const parseDate = (time, duration) => {
-  let startTime = moment(time);
-  let endTime = startTime;
-  const jamDuration = moment(duration);
-  endTime = endTime.add(jamDuration.format("HH"), "hours").add(jamDuration.format("mm"), "minutes");
-  startTime = moment(time);
-  return `${startTime.format("HH:mm")} => ${endTime.format("HH:mm")}`
-}
-
-const jamsToHTML = (jams) => {
-  const jamsBox = document.getElementById("jams");
-  jamsBox.innerHTML = '';
-  jams.forEach(function(jam) {
-    console.log(jam);
-    jamsBox.insertAdjacentHTML('beforeend',
-      `
-        <div class="jam" data-jam-id="${jam.id}">
-          <div class="name">${jam.user.first_name}</div>
-          <div class="style">${jam.music_style.music_style}</div>
-          <div class="status">${jam.status}</div>
-          <div class="max_participants">${jam.participants.length}/${jam.max_participants}</div>
-          <div class="time">${parseDate(jam.start_date_time, jam.duration)}</div>
-        </div>
-      `
-    );
-  });
-}
-
 const getJams = () => {
   const mapCenter = map.getCenter();
   const mapBounds = map.getBounds();
+  const token = document.getElementsByName("csrf-token")[0].content
+  console.log(token);
   fetch("/search", {
     method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'X-CSRF-Token': token
     },
     body: JSON.stringify({
       map_center: mapCenter,
@@ -95,8 +69,7 @@ const getJams = () => {
     return response.json();
   })
   .then(function(data) {
-    const jams = data.jams
-    jamsToHTML(jams);
+    console.log(data);
   })
 }
 
