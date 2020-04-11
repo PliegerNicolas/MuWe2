@@ -90,6 +90,7 @@ const getJams = () => {
       max_lng: mapBounds._ne.lng,
       min_lng: mapBounds._sw.lng,
       filter : {
+        city: document.querySelector("#filter_city").value,
         periode: document.querySelector("#filter_periode").value,
         start_time: document.querySelector("#filter_start_time").value,
         end_time: document.querySelector("#filter_end_time").value,
@@ -105,7 +106,6 @@ const getJams = () => {
   .then(function(data) {
     document.getElementById("jams").innerHTML = data.jams;
     setMarkers(data.jam_coords);
-    flyToCity(data.city_coords);
   })
 }
 
