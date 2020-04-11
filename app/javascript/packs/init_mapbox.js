@@ -53,7 +53,14 @@ const saveUserLocation = (pos) => {
 
 const setMarkers = (markers_pos) => {
   markers_pos.forEach((marker_pos) => {
-    let marker = new mapboxgl.Marker()
+    const element = document.createElement('div');
+    element.className = 'marker';
+    element.style.backgroundImage = `url(${marker_pos.marker_image})`
+    element.style.backgroundSize = 'contain';
+    element.style.width = '20px';
+    element.style.height = '20px';
+
+    let marker = new mapboxgl.Marker(element)
     .setLngLat([marker_pos.lng, marker_pos.lat])
     .addTo(map);
   })

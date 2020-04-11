@@ -88,8 +88,8 @@ class JamsController < ApplicationController
     else
       address = Geocoder.search(given_address).first
       return unless address
+
       address_obj = Address.create!(jam_id: @jam.id, profile_id: current_user.profile.id, given_address: given_address, street: address.street, postal_code: address.postal_code, city: address.city, country: address.country, latitude: address.latitude, longitude: address.longitude)
-      address_obj
     end
   end
 end

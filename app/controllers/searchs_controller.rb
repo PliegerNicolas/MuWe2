@@ -6,9 +6,14 @@ class SearchsController < ApplicationController
     @markers = []
     @jams.each do |jam|
       if jam.address
+        marker_image = helpers.asset_url('muwe-pin-ongoing.svg') if jam.status == 'ongoing'
+        marker_image = helpers.asset_url('muwe-pin-planned.svg') if jam.status == 'planned'
+        marker_image = helpers.asset_url('muwe-pin-finished.svg') if jam.status == 'finished'
+
         event_coords = {
           lat: jam.address.latitude,
-          lng: jam.address.longitude
+          lng: jam.address.longitude,
+          marker_image: marker_image
         }
         @markers << event_coords
       end
