@@ -19,6 +19,8 @@ class SearchsController < ApplicationController
     @jams = policy_scope(Jam).joins(:address).where.not(addresses: { latitude: nil, longitude: nil})
                                              .where('longitude >= ? AND longitude <= ? AND latitude >= ? AND latitude <= ?',
                                              min_bounds[:lng], max_bounds[:lng], min_bounds[:lat], max_bounds[:lat])
+                                             .limit(25)
+                                             .order('start_date_time ASC')
 
     set_city(filter_params[:city])
 
