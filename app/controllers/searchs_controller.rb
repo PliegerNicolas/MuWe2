@@ -18,10 +18,7 @@ class SearchsController < ApplicationController
 
     @jams = policy_scope(Jam).includes(:address)
 
-    unless filter_params[:city].blank?
-      city = Geocoder.search(filter_params[:city])
-      @city_coords = [city.first.longitude, city.first.latitude]
-    end
+    set_city(filter_params[:city])
 
     # Set markers
 
@@ -56,6 +53,13 @@ class SearchsController < ApplicationController
           city_coords: @city_coords
         }
       end
+    end
+  end
+
+  def set_city(given_city)
+    unless given_city.blank?
+      city = Geocoder.search(given_city)
+      @city_coords = [city.first.longitude, city.first.latitude]
     end
   end
 end
