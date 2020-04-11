@@ -16,7 +16,9 @@ class SearchsController < ApplicationController
     filter_params = params[:filter]
     # End set params
 
-    @jams = policy_scope(Jam).includes(:address)
+    @jams = policy_scope(Jam).joins(:address).where.not(addresses: { latitude: nil, longitude: nil})
+                                             .where('longitude >= ? AND longitude <= ? AND latitude >= ? AND latitude <= ?',
+                                             min_bounds[:lng], max_bounds[:lng], min_bounds[:lat], max_bounds[:lat])
 
     set_city(filter_params[:city])
 
