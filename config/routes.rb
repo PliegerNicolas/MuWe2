@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   # Search for events => Map
 
-  post 'search', to: 'searchs#index', as: :search_events
+  post 'search', to: 'searchs#index'
 
   # Save user position
 
