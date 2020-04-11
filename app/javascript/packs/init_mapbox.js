@@ -66,6 +66,13 @@ const setMarkers = (markers_pos) => {
   })
 }
 
+const filter = () => {
+  const filter_button = document.getElementById("filter_button");
+  filter_button.addEventListener("click", function() {
+    getJams();
+  });
+}
+
 const getJams = () => {
   const mapCenter = map.getCenter();
   const mapBounds = map.getBounds();
@@ -81,7 +88,14 @@ const getJams = () => {
       max_lat: mapBounds._ne.lat,
       min_lat: mapBounds._sw.lat,
       max_lng: mapBounds._ne.lng,
-      min_lng: mapBounds._sw.lng
+      min_lng: mapBounds._sw.lng,
+      filter : {
+        periode: document.querySelector("#filter_periode").value,
+        start_time: document.querySelector("#filter_start_time").value,
+        end_time: document.querySelector("#filter_end_time").value,
+        max_players: document.querySelector("#filter_max_players").value,
+        status: document.querySelector("#filter_status").value
+      }
     }),
     credentials: "same-origin"
   })
@@ -130,6 +144,8 @@ if("geolocation" in navigator) {
     map.on('moveend', () => {
       getJams();
     })
+
+    filter();
 
   }, function(error) { // Fallback method if localisation denied by user
       if (error.code == error.PERMISSION_DENIED)
