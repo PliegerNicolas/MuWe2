@@ -23,6 +23,8 @@ class SearchsController < ApplicationController
                                              .order('status ASC')
                                              .order('start_date_time ASC')
 
+    # include filters here
+
     set_city(filter_params[:city])
 
     # Set markers
@@ -60,6 +62,8 @@ class SearchsController < ApplicationController
       end
     end
   end
+
+  private
 
   def set_city(given_city)
     unless given_city.blank?

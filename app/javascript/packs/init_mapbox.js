@@ -51,7 +51,16 @@ const saveUserLocation = (pos) => {
   }
 }
 
+const clearMarkers = () => {
+  const old_markers = Array.from(document.getElementsByClassName("marker"));
+  old_markers.forEach((old_marker) => {
+    old_marker.remove();
+  })
+}
+
 const setMarkers = (markers_pos) => {
+  console.log(markers_pos);
+  clearMarkers();
   markers_pos.forEach((marker_pos) => {
     const element = document.createElement('div');
     element.className = 'marker';
