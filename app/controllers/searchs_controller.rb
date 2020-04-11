@@ -29,7 +29,10 @@ class SearchsController < ApplicationController
       periode_uniq = Date.today if filter_params[:periode] == 'Today'
       periode_uniq = (Date.today - 1.day) if filter_params[:periode] == 'Yesterday'
       periode_uniq = (Date.today + 1.day) if filter_params[:periode] == 'Tomorrow'
+      periode_multiple = [Date.today, Date.today + 7.day] if filter_params[:periode] == "7 days from now"
+      periode_multiple = [Date.today, Date.today + 14.day] if filter_params[:periode] == "14 days from now"
       @jams = @jams.filter_by_periode_uniq(periode_uniq) if periode_uniq
+      @jams = @jams.filter_by_periode_multiple(periode_multiple) if periode_multiple
     end
 
     set_city(filter_params[:city])
