@@ -66,6 +66,19 @@ const setMarkers = (markers_pos) => {
   })
 }
 
+const flyToCity = (city_coords) => {
+  if(city_coords) {
+    map.flyTo({
+      center: city_coords,
+      essential: true
+    })
+    const city_input = document.querySelector("#filter_city");
+    const city = city_input.value;
+    city_input.value = '';
+    city_input.placeholder = city;
+  }
+}
+
 const filter = () => {
   const filter_button = document.getElementById("filter_button");
   filter_button.addEventListener("click", function() {
@@ -106,6 +119,7 @@ const getJams = () => {
   .then(function(data) {
     document.getElementById("jams").innerHTML = data.jams;
     setMarkers(data.jam_coords);
+    flyToCity(data.city_coords);
   })
 }
 
@@ -142,7 +156,10 @@ if("geolocation" in navigator) {
       geolocate.trigger(); // trigger geolocation on page load
     })
 
-    map.on('moveend', () => {
+    map.on('dragend', () => {
+      getJams();
+    })
+    map.on('zoomend', () => {
       getJams();
     })
 
