@@ -59,7 +59,6 @@ const clearMarkers = () => {
 }
 
 const setMarkers = (markers_pos) => {
-  console.log(markers_pos);
   clearMarkers();
   markers_pos.forEach((marker_pos) => {
     const element = document.createElement('div');

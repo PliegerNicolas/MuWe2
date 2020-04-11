@@ -25,6 +25,13 @@ class SearchsController < ApplicationController
 
     # include filters here
 
+    unless filter_params[:periode].blank?
+      periode_uniq = Date.today if filter_params[:periode] == 'Today'
+      periode_uniq = (Date.today - 1.day) if filter_params[:periode] == 'Yesterday'
+      periode_uniq = (Date.today + 1.day) if filter_params[:periode] == 'Tomorrow'
+      @jams = @jams.filter_by_periode_uniq(periode_uniq) if periode_uniq
+    end
+
     set_city(filter_params[:city])
 
     # Set markers

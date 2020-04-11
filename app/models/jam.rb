@@ -12,6 +12,8 @@ class Jam < ApplicationRecord
 
   enum status: { planned: 0, ongoing: 1, finished: 2 }
 
+  scope :filter_by_periode_uniq, ->(periode) { where('start_date_time >= ? AND start_date_time <= ?', periode.beginning_of_day, periode.end_of_day) }
+
   def add_default_participant
     participants.create!(user: user, status: 1)
   end
