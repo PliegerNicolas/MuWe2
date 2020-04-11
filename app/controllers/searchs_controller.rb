@@ -2,7 +2,26 @@ class SearchsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
+    # Set params
+
+    map_center = params[:map_center]
+    max_bounds = {
+      lat: params[:max_lat],
+      lng: params[:max_lng]
+    }
+    min_bounds = {
+      lat: params[:min_lat],
+      lng: params[:min_lng]
+    }
+    filter_params = params[:filter]
+    # End set params
+
     @jams = policy_scope(Jam).includes(:address)
+
+    byebug
+
+    # Set markers
+
     @markers = []
     @jams.each do |jam|
       if jam.address
@@ -19,6 +38,8 @@ class SearchsController < ApplicationController
       end
     end
 
+    # End set markers
+
     respond_to do |format|
       format.json do |f|
         render json: {
@@ -28,7 +49,8 @@ class SearchsController < ApplicationController
             layout: false,
             locals: { jams: @jams }
           ),
-          jam_coords: @markers
+          jam_coords: @markers,
+          city_coords: @city_coords
         }
       end
     end

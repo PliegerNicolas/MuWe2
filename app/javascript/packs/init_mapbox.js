@@ -105,6 +105,7 @@ const getJams = () => {
   .then(function(data) {
     document.getElementById("jams").innerHTML = data.jams;
     setMarkers(data.jam_coords);
+    flyToCity(data.city_coords);
   })
 }
 
