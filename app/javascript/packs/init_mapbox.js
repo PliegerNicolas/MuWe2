@@ -51,6 +51,21 @@ const saveUserLocation = (pos) => {
   }
 }
 
+const setMarkers = (markers_pos) => {
+  markers_pos.forEach((marker_pos) => {
+    const element = document.createElement('div');
+    element.className = 'marker';
+    element.style.backgroundImage = `url(${marker_pos.marker_image})`
+    element.style.backgroundSize = 'contain';
+    element.style.width = '20px';
+    element.style.height = '20px';
+
+    let marker = new mapboxgl.Marker(element)
+    .setLngLat([marker_pos.lng, marker_pos.lat])
+    .addTo(map);
+  })
+}
+
 const getJams = () => {
   const mapCenter = map.getCenter();
   const mapBounds = map.getBounds();
@@ -75,6 +90,7 @@ const getJams = () => {
   })
   .then(function(data) {
     document.getElementById("jams").innerHTML = data.jams;
+    setMarkers(data.jam_coords);
   })
 }
 

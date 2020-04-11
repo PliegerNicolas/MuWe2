@@ -10,7 +10,7 @@ class Jam < ApplicationRecord
 
   validates :max_participants, :status, :start_date_time, :duration, :music_style, presence: true
 
-  enum status: { pending: 0, ongoing: 1, finished: 2 }
+  enum status: { planned: 0, ongoing: 1, finished: 2 }
 
   def add_default_participant
     participants.create!(user: user, status: 1)
