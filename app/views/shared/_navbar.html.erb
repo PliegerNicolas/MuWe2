@@ -1,5 +1,6 @@
 <header>
   <nav>
+  <%= link_to "root_path", root_path %>
     <% if user_signed_in? %>
     <%= link_to 'Profile', my_profile_path %>
       <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
