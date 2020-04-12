@@ -1,14 +1,11 @@
-<header>
-  <nav>
-  <%= link_to "root_path", root_path %>
-    <% if user_signed_in? %>
-    <%= link_to "dashboard", dashboard_path %>
-    <%= link_to 'Profile', my_profile_path %>
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign in", new_user_session_path %>
-      <%= link_to "Sign up", new_user_registration_path %>
-    <% end %>
-  </nav>
-  <%= render "privacy_settings/notice" %>
-</header>
+<nav>
+<%= link_to "root_path", root_path %>
+  <% if user_signed_in? %>
+  <%= link_to "dashboard", dashboard_path %>
+  <%= link_to 'Profile', my_profile_path %>
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Sign in", new_user_session_path %>
+    <%= link_to "Sign up", new_user_registration_path %>
+  <% end %>
+</nav>
