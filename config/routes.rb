@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # Profile routes
 
   get 'my_profile', to: 'profiles#my_profile', as: :my_profile
-  get 'profile/:id', to: 'profiles#public_profile', as: :public_profile
+  get 'profile/:id', to: 'profiles#public_profile', as: :profile
 
   # User privacy settings
 
