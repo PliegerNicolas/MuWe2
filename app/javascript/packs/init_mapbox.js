@@ -115,7 +115,7 @@ const getJams = () => {
         periode: document.querySelector("#filter_periode").value,
         start_time: document.querySelector("#filter_start_time").value,
         end_time: document.querySelector("#filter_end_time").value,
-        max_players: document.querySelector("#filter_max_players").value,
+        max_participants: document.querySelector("#filter_max_participants").value,
         status: document.querySelector("#filter_status").value
       }
     }),

@@ -21,7 +21,8 @@ class SearchsController < ApplicationController
                                              min_bounds[:lng], max_bounds[:lng], min_bounds[:lat], max_bounds[:lat])
                                              .limit(25)
                                              .order('status ASC')
-                                             .order('start_date_time ASC')
+                                             .order('start_date ASC')
+                                             .order('start_time ASC')
 
     # include filters here
 
@@ -35,16 +36,21 @@ class SearchsController < ApplicationController
       @jams = @jams.filter_by_periode_multiple(periode_multiple) if periode_multiple
     end
 
-    unless filter_params[:start_time].blank? && filter_params[:end_time].blank?
-      time_periode = [filter_params[:start_time], filter_params[:end_time]]
-      byebug
-      # @jams = @jams.filter_by_time(time_periode)
-    end
+    start_time = filter_params[:start_time]
+    end_time = filter_params[:end_time]
+    time_periode = [start_time, end_time] unless start_time.blank? && end_time.blank?
+    @jams = @jams.filter_by_time(time_periode) if time_periode
+    @jams = @jams.filter_by_start_time(start_time) unless time_periode || start_time.blank?
+    @jams = @jams.filter_by_end_time(end_time) unless time_periode || end_time.blank?
 
-    unless filter_params[:start_time].blank?
-    end
+    @jams = @jams.filter_by_max_participants(filter_params[:max_participants]) unless filter_params[:max_participants].blank?
 
-    unless filter_params[:end_time].blank?
+    if !filter_params[:status].blank? && filter_params[:status] == 'Ongoing/Planned'
+      status_multiple = filter_params[:status].split('/')
+      status_multiple.map!(&:downcase)
+      @jams = @jams.filter_by_duo_status(status_multiple)
+    elsif !filter_params[:status].blank?
+      @jams = @jams.filter_by_status(filter_params[:status].downcase!)
     end
 
     set_city(filter_params[:city])

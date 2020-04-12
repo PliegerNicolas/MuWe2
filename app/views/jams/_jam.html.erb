@@ -4,7 +4,9 @@
   <%= jam.status %>
   <%= jam.user.first_name %>
   <%= jam.music_style.music_style %>
-  <%= display_date(jam.start_date_time, jam.duration) %>
+  <%= jam.start_date %>
+  <%= jam.start_time %>
+  <%= jam.end_time %>
   <%= jam.participants.count %>/<%= jam.max_participants %>
 </div>
 <% end %>
