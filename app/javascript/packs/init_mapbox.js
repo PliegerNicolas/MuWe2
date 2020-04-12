@@ -51,7 +51,15 @@ const saveUserLocation = (pos) => {
   }
 }
 
+const clearMarkers = () => {
+  const old_markers = Array.from(document.getElementsByClassName("marker"));
+  old_markers.forEach((old_marker) => {
+    old_marker.remove();
+  })
+}
+
 const setMarkers = (markers_pos) => {
+  clearMarkers();
   markers_pos.forEach((marker_pos) => {
     const element = document.createElement('div');
     element.className = 'marker';
@@ -64,6 +72,26 @@ const setMarkers = (markers_pos) => {
     .setLngLat([marker_pos.lng, marker_pos.lat])
     .addTo(map);
   })
+}
+
+const flyToCity = (city_coords) => {
+  if(city_coords) {
+    map.flyTo({
+      center: city_coords,
+      essential: true
+    })
+    const city_input = document.querySelector("#filter_city");
+    const city = city_input.value;
+    city_input.value = '';
+    city_input.placeholder = city;
+  }
+}
+
+const filter = () => {
+  const filter_button = document.getElementById("filter_button");
+  filter_button.addEventListener("click", function() {
+    getJams();
+  });
 }
 
 const getJams = () => {
@@ -81,7 +109,15 @@ const getJams = () => {
       max_lat: mapBounds._ne.lat,
       min_lat: mapBounds._sw.lat,
       max_lng: mapBounds._ne.lng,
-      min_lng: mapBounds._sw.lng
+      min_lng: mapBounds._sw.lng,
+      filter : {
+        city: document.querySelector("#filter_city").value,
+        periode: document.querySelector("#filter_periode").value,
+        start_time: document.querySelector("#filter_start_time").value,
+        end_time: document.querySelector("#filter_end_time").value,
+        max_participants: document.querySelector("#filter_max_participants").value,
+        status: document.querySelector("#filter_status").value
+      }
     }),
     credentials: "same-origin"
   })
@@ -91,6 +127,7 @@ const getJams = () => {
   .then(function(data) {
     document.getElementById("jams").innerHTML = data.jams;
     setMarkers(data.jam_coords);
+    flyToCity(data.city_coords);
   })
 }
 
@@ -127,9 +164,14 @@ if("geolocation" in navigator) {
       geolocate.trigger(); // trigger geolocation on page load
     })
 
-    map.on('moveend', () => {
+    map.on('dragend', () => {
       getJams();
     })
+    map.on('zoomend', () => {
+      getJams();
+    })
+
+    filter();
 
   }, function(error) { // Fallback method if localisation denied by user
       if (error.code == error.PERMISSION_DENIED)

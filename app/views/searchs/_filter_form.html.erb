@@ -1,0 +1,9 @@
+<%= simple_form_for :filter do |f| %>
+  <%= f.input :city %>
+  <%= f.input :periode, collection: ['Yesterday','Today', 'Tomorrow', '7 days from now', '14 days from now'], selected: 'Today' %>
+  <%= f.input :start_time, collection: time_array  %>
+  <%= f.input :end_time, collection: time_array  %>
+  <%= f.input :max_participants, collection: 1..20 %>
+  <%= f.input :status, collection: ['Ongoing/Planned', 'Ongoing', 'Planned', 'Finished'], selected: 'Ongoing/Planned' %>
+  <button type="button" id="filter_button">Filter</button>
+<% end %>

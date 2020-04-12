@@ -8,9 +8,18 @@ class Jam < ApplicationRecord
   has_one :chat
   has_one_attached :photo
 
-  validates :max_participants, :status, :start_date_time, :duration, :music_style, presence: true
+  validates :max_participants, :status, :start_date, :start_time, :duration, :end_time, :music_style, presence: true
 
   enum status: { planned: 0, ongoing: 1, finished: 2 }
+
+  scope :filter_by_periode_uniq, ->(periode) { where('start_date = ?', periode) }
+  scope :filter_by_periode_multiple, ->(periodes) { where('start_date BETWEEN ? AND ?', periodes[0], periodes[1]) }
+  scope :filter_by_time, ->(time_periode) { where('start_time >= ? AND end_time <= ?', time_periode[0], time_periode[1]) }
+  scope :filter_by_start_time, ->(start_time) {  where('start_time >= ?', start_time)}
+  scope :filter_by_end_time, ->(end_time) {  where('end_time <= ?', end_time)}
+  scope :filter_by_max_participants, ->(max_participants) { where('max_participants <= ?', max_participants) }
+  scope :filter_by_status, ->(status) { where(status: status) }
+  scope :filter_by_duo_status, ->(status_multiple) { where(status: status_multiple) }
 
   def add_default_participant
     participants.create!(user: user, status: 1)
