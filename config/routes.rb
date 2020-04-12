@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   get 'jam/:id', to: 'jams#archive', as: :archive_jam
   resources :jams
 
+  # Dashboard routes
+
+  get 'dashboard', to: 'dashboards#dashboard'
+
   # Profile routes
 
   get 'my_profile', to: 'profiles#my_profile', as: :my_profile
