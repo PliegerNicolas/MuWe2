@@ -35,6 +35,18 @@ class SearchsController < ApplicationController
       @jams = @jams.filter_by_periode_multiple(periode_multiple) if periode_multiple
     end
 
+    unless filter_params[:start_time].blank? && filter_params[:end_time].blank?
+      time_periode = [filter_params[:start_time], filter_params[:end_time]]
+      byebug
+      # @jams = @jams.filter_by_time(time_periode)
+    end
+
+    unless filter_params[:start_time].blank?
+    end
+
+    unless filter_params[:end_time].blank?
+    end
+
     set_city(filter_params[:city])
 
     # Set markers

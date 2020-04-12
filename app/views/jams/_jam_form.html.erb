@@ -3,10 +3,13 @@
   <%= f.input :photo %>
   <%= f.association :music_style, label_method: :music_style %>
   <%= f.input :max_participants, collection: 2..16 %>
-  <%= f.input :start_date_time %>
-  <%= f.input :duration, as: :time %>
+  <%= f.input :start_date %>
+  <%= f.input :start_time, collection: time_array %>
+  <%= f.input :duration, collection: time_array %>
   <%= f.input :privacy %>
-  <%= f.input :address %>
+  <%= f.fields_for :other do |o| %>
+    <%= o.input :given_address %>
+  <% end %>
   <%= f.submit %>
 <% end %>
 

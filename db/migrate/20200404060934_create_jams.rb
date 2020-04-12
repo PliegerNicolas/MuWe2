@@ -6,8 +6,10 @@ class CreateJams < ActiveRecord::Migration[6.0]
       t.text :description
       t.integer :max_participants
       t.integer :status, default: 0
-      t.datetime :start_date_time
+      t.date :start_date
+      t.time :start_time
       t.time :duration
+      t.time :end_time
       t.boolean :privacy, default: false
 
       t.timestamps

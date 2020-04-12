@@ -46,7 +46,7 @@ if("geolocation" in navigator) {
 
     map.on('click', function(event) {
       var clickCoords = event.lngLat;
-      const addressField = document.getElementById("jam_address");
+      const addressField = document.getElementById("jam_other_given_address");
       addressField.value = `${clickCoords.lat} ${clickCoords.lng}`
     });
 
