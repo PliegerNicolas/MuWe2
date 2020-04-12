@@ -2,8 +2,15 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'jams#index'
 
+  # Jams routes
+
   get 'jam/:id', to: 'jams#archive', as: :archive_jam
   resources :jams
+
+  # Profile routes
+
+  get 'my_profile', to: 'profiles#my_profile', as: :my_profile
+  get 'profile/:id', to: 'profiles#public_profile', as: :profile
 
   # User privacy settings
 
