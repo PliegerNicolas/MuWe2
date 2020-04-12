@@ -1,4 +1,4 @@
-<%= simple_form_for :filter do |f| %>
+<%= simple_form_for :filter, url: root_path, method: :get do |f| %>
   <%= f.input :city %>
   <%= f.input :periode, collection: ['Yesterday','Today', 'Tomorrow', '7 days from now', '14 days from now'], selected: 'Today' %>
   <%= f.input :start_time, collection: time_array  %>
