@@ -1,5 +1,6 @@
 <% jams.each do |jam| %>
 <div class="jam-card">
+  <%= link_to "Jam_page", jam_path(jam.id) %>
   <%= image_tag jam.photo %>
   <%= jam.status %>
   <%= jam.user.first_name %>
