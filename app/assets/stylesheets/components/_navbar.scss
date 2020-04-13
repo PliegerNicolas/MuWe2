@@ -15,5 +15,15 @@ header {
 
 nav {
   @include nav;
+  background-color: $muwe-black-dark;
   height: 77px;
+}
+
+.nav-section {
+  margin: 0 2px;
+  @include flex-row;
+
+  & > * {
+    margin: 0 12px;
+  }
 }
