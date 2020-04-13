@@ -1,11 +1,27 @@
-<nav>
-<%= link_to "root_path", root_path %>
-  <% if user_signed_in? %>
-  <%= link_to "dashboard", dashboard_path %>
-  <%= link_to 'Profile', my_profile_path %>
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to "Sign in", new_user_session_path %>
-    <%= link_to "Sign up", new_user_registration_path %>
-  <% end %>
-</nav>
+<header>
+  <nav>
+    <div class="nav-left">
+      <div class="logo">
+        <%= link_to root_path do %>
+          <%= image_tag "muwe-logo.svg", height: "65px", width: "65px" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <% if user_signed_in? %>
+        <div class="dashboard"><%= link_to "dashboard", dashboard_path %></div>
+        <div class="profile"><%= link_to "Profile", my_profile_path %></div>
+        <div>
+          <%= link_to my_profile_path do %>
+            <%= image_tag current_user.profile.photo, height: "60px", width: "60px", secure: true, class: "nav-profile-photo" %>
+          <% end %>
+        </div>
+        <div class="sign-out"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></div>
+      <% else %>
+        <div class="sign-in"><%= link_to "Sign in", new_user_session_path %></div>
+        <div class="sign-up"><%= link_to "Sign up", new_user_registration_path %></div>
+      <% end %>
+    </div>
+  </nav>
+</header>
