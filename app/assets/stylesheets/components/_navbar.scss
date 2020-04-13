@@ -53,3 +53,11 @@ nav {
     margin: 0 12px;
   }
 }
+
+.organise-jam-button {
+  @include flex-center-all;
+  background-color: $muwe-black;
+  width: 240px;
+  border-radius: 6px;
+  padding: 6px 10px;
+}

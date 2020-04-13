@@ -1,12 +1,24 @@
-<div class="big-map" id="map" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-<%= link_to "privacy true", accept_privacy_cookie_path, remote: true %>
-<%= link_to "privacy false", deny_privacy_cookie_path, remote: true %>
-<%= link_to "privacy reset", reset_privacy_cookie_path, remote: true %>
+<div class="map-section">
+  <div class="filter-wrapper">
+    <%= render 'searchs/filter_form' %>
+  </div>
+  <div class="jam-wrapper">
+    <div id="jams">
 
-<%= render 'searchs/filter_form' %>
+    </div>
+  </div>
+  <div class="map-wrapper">
+    <div class="big-map" id="map" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  </div>
+</div>
+<div class="posts-section">
+
+</div>
+
+
+
+
 
 <%= link_to "new jam", new_jam_path %>
-
-<div id="jams"></div>
 
 <%= javascript_pack_tag 'init_mapbox' %>
