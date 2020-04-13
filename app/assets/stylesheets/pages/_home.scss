@@ -1,1 +1,32 @@
-// Specific CSS for your home-page
+// Map section
+
+.map-section {
+  display: grid;
+  grid-template-columns: 22% 30% 48%;
+  grid-template-rows: 100%;
+  height: 83vh;
+  width: 100vw;
+  max-width: 100%;
+  & > * {
+    height: 100%;
+  }
+}
+
+
+.filter-wrapper {
+
+}
+
+.jam-wrapper {
+
+}
+
+.map-wrapper {
+
+}
+
+// Posts section
+
+.posts-section {
+  height: 83vh;
+}
