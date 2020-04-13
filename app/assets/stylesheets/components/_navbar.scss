@@ -17,6 +17,32 @@ nav {
   @include nav;
   background-color: $muwe-black-dark;
   height: 77px;
+
+  a {
+    color: $muwe-brand-green;
+    weight: bold;
+    font-size: 1.4rem;
+    transition: 0.2s;
+
+    &:active {
+      color: $muwe-green-dark;
+      transition: 0.1s;
+      text-decoration: none;
+    }
+
+    &:hover {
+      color: $muwe-green-dark;
+      transition: 0.1s;
+      text-decoration: none;
+    }
+
+    &:focus {
+      color: $muwe-green-dark;
+      transition: 0.1s;
+      text-decoration: underline solid $muwe-green-dark;
+      outline: none;
+    }
+  }
 }
 
 .nav-section {
@@ -26,4 +52,12 @@ nav {
   & > * {
     margin: 0 12px;
   }
+}
+
+.organise-jam-button {
+  @include flex-center-all;
+  background-color: $muwe-black;
+  width: 240px;
+  border-radius: 6px;
+  padding: 6px 10px;
 }

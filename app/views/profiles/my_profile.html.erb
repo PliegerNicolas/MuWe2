@@ -1,2 +1,6 @@
 my_profile.html.erb
 <%= link_to "Edit profile", edit_user_registration_path %>
+
+<%= link_to "privacy true", accept_privacy_cookie_path, remote: true %>
+<%= link_to "privacy false", deny_privacy_cookie_path, remote: true %>
+<%= link_to "privacy reset", reset_privacy_cookie_path, remote: true %>
