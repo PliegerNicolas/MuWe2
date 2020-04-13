@@ -11,6 +11,12 @@
   align-items: center;
 }
 
+@mixin map-section {
+  display: grid;
+  grid-template-columns: 22% 30% 48%;
+  grid-template-rows: 100%;
+}
+
 @mixin flex-row {
   display: flex;
   flex-direction: row;

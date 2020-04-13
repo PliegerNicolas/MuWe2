@@ -1,11 +1,10 @@
 // Map section
 
 .map-section {
-  display: grid;
-  grid-template-columns: 22% 30% 48%;
-  grid-template-rows: 100%;
+  @include map-section;
+  color: $muwe-pure-white;
   background-color: $muwe-black;
-  background-image: url("wrapping-instruments.png"), linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 3%, rgba(43,43,45,1) 6%, rgba(43,43,45,1) 100%);
+  background-image: url("wrapping-instruments.png"), linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 3%, rgba(43,43,45,0.8) 7%, rgba(43,43,45,1) 100%);
   background-repeat: repeat-x;
   background-position: bottom;
   height: 83vh;
