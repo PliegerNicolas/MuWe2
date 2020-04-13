@@ -16,13 +16,14 @@ class SearchsController < ApplicationController
     filter_params = params[:filter]
     # End set params
 
-    @jams = policy_scope(Jam).joins(:address).where.not(addresses: { latitude: nil, longitude: nil})
+    @jams = policy_scope(Jam).joins(:address).where('start_date >= ?', Date.today - 1.day)
+                                             .where.not(addresses: { latitude: nil, longitude: nil})
                                              .where('longitude >= ? AND longitude <= ? AND latitude >= ? AND latitude <= ?',
                                              min_bounds[:lng], max_bounds[:lng], min_bounds[:lat], max_bounds[:lat])
                                              .limit(25)
-                                             .order('status ASC')
-                                             .order('start_date ASC')
                                              .order('start_time ASC')
+                                             .order('start_date ASC')
+                                             .order('status ASC')
 
     # include filters here
 
