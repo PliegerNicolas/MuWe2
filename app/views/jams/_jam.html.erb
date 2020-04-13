@@ -1,13 +1,38 @@
 <% jams.each do |jam| %>
-<div class="jam-card">
-  <%= link_to "Jam_page", jam_path(jam.id) %>
-  <%= image_tag jam.photo %>
-  <%= jam.status %>
-  <%= jam.user.first_name %>
-  <%= jam.music_style.music_style %>
-  <%= jam.start_date %>
-  <%= jam.start_time %>
-  <%= jam.end_time %>
-  <%= jam.participants.count %>/<%= jam.max_participants %>
-</div>
+  <div class="jam-card">
+    <div class="jam-card-left">
+      <div class="jam-image">
+        <%= image_tag jam.photo, width: "130px", height: "175px", secure: true %>
+        <div class="jam-status">
+          <% if jam.ongoing? %>
+            <i class="fas fa-circle" style="color: #36B554"></i> <!-- Green -->
+            <p style="color: #36B554"><%= jam.status.capitalize %></p>
+          <% elsif jam.planned? %>
+            <i class="fas fa-circle" style="color: #42ABE7"></i> <!-- Blue -->
+            <p style="color: #42ABE7"><%= jam.status.capitalize %></p>
+          <% else %>
+            <i class="fas fa-circle" style="color: #7B7B7B"></i> <!-- Gray -->
+            <p style="color: #7B7B7B"><%= jam.status.capitalize %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="jam-card-right">
+      <div class="jam-address">
+        <p><%= jam.address.street %>, <%= jam.address.city %>, <%= jam.address.country %></p>
+      </div>
+      <div class="jam-time">
+        <p>From <div class="time"><%= jam.start_time.strftime("%H:%M") %></div> until <div class="time"><%= jam.end_time.strftime("%H:%M") %></div></p>
+      </div>
+      <div class="jam-host">
+        <p>Host :</p>
+        <%= link_to profile_path(jam.user.id) do %>
+          <%= jam.user.first_name %>
+        <% end %>
+      </div>
+      <div class="jam-participants">
+        <p>Participants : <%= jam.participants.count %>/<%= jam.max_participants %></p>
+      </div>
+    </div>
+  </div>
 <% end %>
