@@ -17,6 +17,32 @@ nav {
   @include nav;
   background-color: $muwe-black-dark;
   height: 77px;
+
+  a {
+    color: $muwe-brand-green;
+    weight: bold;
+    font-size: 1.4rem;
+    transition: 0.2s;
+
+    &:active {
+      color: $muwe-green-dark;
+      transition: 0.1s;
+      text-decoration: none;
+    }
+
+    &:hover {
+      color: $muwe-green-dark;
+      transition: 0.1s;
+      text-decoration: none;
+    }
+
+    &:focus {
+      color: $muwe-green-dark;
+      transition: 0.1s;
+      text-decoration: none;
+      outline: 1px solid $muwe-brand-green;
+    }
+  }
 }
 
 .nav-section {
