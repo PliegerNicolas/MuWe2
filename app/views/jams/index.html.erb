@@ -1,8 +1,8 @@
 <div class="map-section">
-  <div class="filter-wrapper">
+  <div class="filter-wrapper wrapper">
     <%= render 'searchs/filter_form' %>
   </div>
-  <div class="jam-wrapper">
+  <div class="jam-wrapper wrapper">
     <div id="jams">
 
     </div>
@@ -14,11 +14,5 @@
 <div class="posts-section">
 
 </div>
-
-
-
-
-
-<%= link_to "new jam", new_jam_path %>
 
 <%= javascript_pack_tag 'init_mapbox' %>

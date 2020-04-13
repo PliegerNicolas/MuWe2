@@ -1,0 +1,48 @@
+.jam-card {
+  @include flex-row;
+  height: 240px;
+  width: 100%;
+  color: $muwe-black;
+  background-color: $muwe-pure-white;
+  border-radius: 4px;
+  margin: 15px 0;
+}
+
+.jam-card-left {
+  @include flex-center-all;
+  position: relative;
+  height: 100%;
+  width: 35%;
+
+  .jam-image {
+    height: 95%;
+    width: 92%;
+  }
+
+  .jam-status {
+    @include flex-row;
+    position: absolute;
+    top: 0;
+    backdrop-filter: blur(2px);
+    border-radius: 4px;
+    background-color: rgba(43, 43, 45, 0.75); // muwe-black 0.45 opacity
+    margin: 10px 5px;
+    padding: 5px 10px;
+  }
+
+  p {
+    margin: 2px 8px;
+  }
+
+  img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+  }
+}
+
+.jam-card-right {
+  height: 100%;
+  width: 65%;
+}
