@@ -5,8 +5,8 @@ function animateNotice(notice) {
 function addNotice(new_notice)  {
   const notice = document.getElementById("notice");
   if(!notice) {
-    const main = document.getElementsByTagName("main")[0];
-    main.insertAdjacentHTML('afterbegin', new_notice);
+    const body = document.getElementsByTagName("body")[0];
+    body.insertAdjacentHTML('afterbegin', new_notice);
     const notice = document.getElementById("notice");
     animateNotice(notice);
   }

@@ -11,13 +11,14 @@
     <%= render 'application/favicon' %> <!-- Favicon -->
   </head>
   <body>
+    <%= render "privacy_settings/notice" %>
     <%= render 'shared/navbar' %>
     <main>
-    <%= render "privacy_settings/notice" %>
-    <%= yield %>
+      <%= yield %>
     </main>
     <%= render 'shared/footer' %>
     <%= render 'shared/flashes' %>
+
 
     <%= javascript_pack_tag 'application' %>
   </body>
