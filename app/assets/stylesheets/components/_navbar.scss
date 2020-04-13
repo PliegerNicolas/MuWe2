@@ -39,8 +39,8 @@ nav {
     &:focus {
       color: $muwe-green-dark;
       transition: 0.1s;
-      text-decoration: none;
-      outline: 1px solid $muwe-brand-green;
+      text-decoration: underline solid $muwe-green-dark;
+      outline: none;
     }
   }
 }
