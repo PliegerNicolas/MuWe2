@@ -4,6 +4,7 @@
   display: grid;
   grid-template-columns: 22% 30% 48%;
   grid-template-rows: 100%;
+  background-color: $muwe-black;
   height: 83vh;
   width: 100vw;
   max-width: 100%;
@@ -14,15 +15,18 @@
 
 
 .filter-wrapper {
-
+  height: 96%;
 }
 
 .jam-wrapper {
-
+  height: 96%;
 }
 
 .map-wrapper {
-
+  @include flex-center-all;
+  background-color: $muwe-black-dark;
+  height: 101%;
+  border-radius: 4px 0 0 4px;
 }
 
 // Posts section
