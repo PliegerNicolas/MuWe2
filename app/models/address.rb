@@ -2,6 +2,7 @@ class Address < ApplicationRecord
   belongs_to :profile, optional: true
   belongs_to :jam, optional: true
 
+  reverse_geocoded_by :latitude, :longitude
   def display_address
     if latitude && longitude
       if street.exists?

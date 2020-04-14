@@ -8,4 +8,8 @@ class AddressPolicy < ApplicationPolicy
   def save_location?
     record.profile.user == user
   end
+
+  def local_data?
+    true
+  end
 end
