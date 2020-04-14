@@ -74,11 +74,6 @@ const setMarkers = (markers_pos) => {
   })
 }
 
-const userData = (city, user_count) => {
-  console.log(city);
-  console.log(user_count);
-}
-
 const flyToCity = (city_coords) => {
   if(city_coords) {
     map.flyTo({
@@ -133,7 +128,6 @@ const getJams = () => {
     document.getElementById("jams").innerHTML = data.jams;
     setMarkers(data.jam_coords);
     flyToCity(data.city_coords);
-    // userData(data.city, data.user_count);
   })
 }
 
