@@ -25,6 +25,12 @@ class SearchsController < ApplicationController
                                              .order('start_date ASC')
                                              .order('status ASC')
 
+    # Posts
+
+    # @posts = policy_scope(Post)
+
+    # Online Users and City
+
     # include filters here
 
     unless filter_params[:periode].blank?

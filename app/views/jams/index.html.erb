@@ -1,5 +1,8 @@
 <div class="map-section">
   <div class="filter-wrapper wrapper">
+    <p><% if current_user %>
+        <%= pluralize(@user_count, 'User') %> around <%= @city %>
+    <% end %></p>
     <%= render 'searchs/filter_form' %>
   </div>
   <div class="jam-wrapper wrapper">

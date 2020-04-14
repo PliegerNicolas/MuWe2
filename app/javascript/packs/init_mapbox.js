@@ -74,13 +74,18 @@ const setMarkers = (markers_pos) => {
   })
 }
 
+const userData = (city, user_count) => {
+  console.log(city);
+  console.log(user_count);
+}
+
 const flyToCity = (city_coords) => {
   if(city_coords) {
     map.flyTo({
       center: city_coords,
       essential: true
     })
-    const city_input = document.querySelector("#filter_city");
+    const city_input = document.querySelector("#filter-city");
     const city = city_input.value;
     city_input.value = '';
     city_input.placeholder = city;
@@ -88,7 +93,7 @@ const flyToCity = (city_coords) => {
 }
 
 const filter = () => {
-  const filter_button = document.getElementById("filter_button");
+  const filter_button = document.getElementById("filter-button");
   filter_button.addEventListener("click", function() {
     getJams();
   });
@@ -111,12 +116,12 @@ const getJams = () => {
       max_lng: mapBounds._ne.lng,
       min_lng: mapBounds._sw.lng,
       filter : {
-        city: document.querySelector("#filter_city").value,
-        periode: document.querySelector("#filter_periode").value,
-        start_time: document.querySelector("#filter_start_time").value,
-        end_time: document.querySelector("#filter_end_time").value,
-        max_participants: document.querySelector("#filter_max_participants").value,
-        status: document.querySelector("#filter_status").value
+        city: document.querySelector("#filter-city").value,
+        periode: document.querySelector("#filter-periode").value,
+        start_time: document.querySelector("#filter-start-time").value,
+        end_time: document.querySelector("#filter-end-time").value,
+        max_participants: document.querySelector("#filter-max-participants").value,
+        status: document.querySelector("#filter-status").value
       }
     }),
     credentials: "same-origin"
@@ -128,6 +133,7 @@ const getJams = () => {
     document.getElementById("jams").innerHTML = data.jams;
     setMarkers(data.jam_coords);
     flyToCity(data.city_coords);
+    // userData(data.city, data.user_count);
   })
 }
 
