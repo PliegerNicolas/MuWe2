@@ -15,14 +15,14 @@ class LocalDatasController < ApplicationController
       @city = "..."
     end
 
-    @online_users = Address.near([user_pos[:lat], user_pos[:lng]], 35).where.not(profile_id: nil)
+    near_addresses = Address.near([user_pos[:lat], user_pos[:lng]], 35).where.not(profile_id: nil)
+    @online_users = near_addresses
     authorize @online_users
     @online_users = @online_users.to_a.count - 1
 
     # posts
 
-    @posts = policy_scope(Post)
-    byebug
+    @posts = near_addresses.limit(30).map { |address| address.profile.posts }.flatten
 
     respond_to do |format|
       format.json do |f|
