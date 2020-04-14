@@ -47,7 +47,8 @@ const saveUserLocation = (pos) => {
       body: JSON.stringify({
         lat: pos.lat,
         lng: pos.lng
-      })
+      }),
+      credentials: "same-origin"
     })
   }
 }
