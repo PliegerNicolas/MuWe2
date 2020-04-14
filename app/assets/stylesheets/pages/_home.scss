@@ -4,7 +4,7 @@
   @include map-section;
   color: $muwe-pure-white;
   background-color: $muwe-black;
-  background-image: url("wrapping-instruments.png"), linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 5%, rgba(37,38,39,1) 11%, rgba(37,38,39,1) 100%);
+  background-image: image-url("wrapping-instruments.png"), linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 5%, rgba(37,38,39,1) 11%, rgba(37,38,39,1) 100%);
   background-repeat: repeat-x;
   background-position: bottom;
   height: 84vh;
