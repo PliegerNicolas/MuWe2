@@ -22,7 +22,7 @@ class LocalDatasController < ApplicationController
 
     # posts
 
-    @posts = near_addresses.limit(30).map { |address| address.profile.posts }.flatten
+    @posts = near_addresses.map { |address| address.profile.posts.last }.flatten
 
     respond_to do |format|
       format.json do |f|
