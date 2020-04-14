@@ -4,6 +4,7 @@ class SearchsController < ApplicationController
   def index
     # Set params
 
+    user_pos = params[:user_pos]
     map_center = params[:map_center]
     max_bounds = {
       lat: params[:max_lat],
@@ -24,6 +25,10 @@ class SearchsController < ApplicationController
                                              .order('start_time ASC')
                                              .order('start_date ASC')
                                              .order('status ASC')
+
+    # Posts
+
+    # @posts = policy_scope(Post)
 
     # include filters here
 
@@ -86,7 +91,9 @@ class SearchsController < ApplicationController
             locals: { jams: @jams }
           ),
           jam_coords: @markers,
-          city_coords: @city_coords
+          city_coords: @city_coords,
+          city: @city,
+          online_users: @online_users
         }
       end
     end

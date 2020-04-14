@@ -3,6 +3,7 @@ import mapboxgl from 'mapbox-gl';
 
 let map;
 let initUserPos;
+let userPos;
 
 const createMap = (pos) => {
   const mapElement = document.getElementById("map"); // Get map element if exists (div)
@@ -74,13 +75,27 @@ const setMarkers = (markers_pos) => {
   })
 }
 
+const userData = (data) => {
+  const user_count = document.getElementById("user-count");
+  const city = document.getElementById("city");
+  const user_plural = document.getElementById("user-plural");
+  user_count.innerHTML = data.online_users;
+  city.innerHTML = data.city;
+  if (data.online_users > 1) {
+    user_plural.innerHTML = 'Users';
+  } else {
+    user_plural.innerHTML = 'User';
+  }
+
+}
+
 const flyToCity = (city_coords) => {
   if(city_coords) {
     map.flyTo({
       center: city_coords,
       essential: true
     })
-    const city_input = document.querySelector("#filter_city");
+    const city_input = document.querySelector("#filter-city");
     const city = city_input.value;
     city_input.value = '';
     city_input.placeholder = city;
@@ -88,10 +103,31 @@ const flyToCity = (city_coords) => {
 }
 
 const filter = () => {
-  const filter_button = document.getElementById("filter_button");
+  const filter_button = document.getElementById("filter-button");
   filter_button.addEventListener("click", function() {
     getJams();
   });
+}
+
+const getUserData = () => {
+  const token = document.getElementsByName("csrf-token")[0].content
+  fetch(window.location.origin + "/local_data", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': token
+    },
+    body: JSON.stringify({
+      user_pos: userPos,
+    }),
+    credentials: "same-origin"
+  })
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(data) {
+    userData(data);
+  })
 }
 
 const getJams = () => {
@@ -105,18 +141,19 @@ const getJams = () => {
       'X-CSRF-Token': token
     },
     body: JSON.stringify({
+      user_pos: userPos,
       map_center: mapCenter,
       max_lat: mapBounds._ne.lat,
       min_lat: mapBounds._sw.lat,
       max_lng: mapBounds._ne.lng,
       min_lng: mapBounds._sw.lng,
       filter : {
-        city: document.querySelector("#filter_city").value,
-        periode: document.querySelector("#filter_periode").value,
-        start_time: document.querySelector("#filter_start_time").value,
-        end_time: document.querySelector("#filter_end_time").value,
-        max_participants: document.querySelector("#filter_max_participants").value,
-        status: document.querySelector("#filter_status").value
+        city: document.querySelector("#filter-city").value,
+        periode: document.querySelector("#filter-periode").value,
+        start_time: document.querySelector("#filter-start-time").value,
+        end_time: document.querySelector("#filter-end-time").value,
+        max_participants: document.querySelector("#filter-max-participants").value,
+        status: document.querySelector("#filter-status").value
       }
     }),
     credentials: "same-origin"
@@ -162,6 +199,11 @@ if("geolocation" in navigator) {
     map.addControl(geolocate); // Add geolocate method to map
     map.on('load', () => {
       geolocate.trigger(); // trigger geolocation on page load
+    })
+
+    geolocate.on('geolocate', function(event) {
+      userPos = { lng: event.coords.longitude, lat: event.coords.latitude }
+      getUserData(userPos);
     })
 
     map.on('dragend', () => {

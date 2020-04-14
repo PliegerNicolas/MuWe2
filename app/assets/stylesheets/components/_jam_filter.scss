@@ -1,0 +1,12 @@
+#filter-form {
+  @include flex-column;
+  align-items: center;
+
+  & > * {
+    width: 85%;
+  }
+}
+
+#filter-button {
+
+}
