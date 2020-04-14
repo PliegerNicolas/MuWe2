@@ -78,14 +78,8 @@ const setMarkers = (markers_pos) => {
 const userData = (data) => {
   const user_count = document.getElementById("user-count");
   const city = document.getElementById("city");
-  const user_plural = document.getElementById("user-plural");
   user_count.innerHTML = data.online_users;
   city.innerHTML = data.city;
-  if (data.online_users > 1) {
-    user_plural.innerHTML = 'Users';
-  } else {
-    user_plural.innerHTML = 'User';
-  }
 
 }
 
