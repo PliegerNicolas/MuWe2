@@ -15,13 +15,24 @@ class LocalDatasController < ApplicationController
       @city = "..."
     end
 
-    @online_users = Address.near([user_pos[:lat], user_pos[:lng]], 35).where.not(profile_id: nil)
+    near_addresses = Address.near([user_pos[:lat], user_pos[:lng]], 35).where.not(profile_id: nil)
+    @online_users = near_addresses
     authorize @online_users
     @online_users = @online_users.to_a.count - 1
+
+    # posts
+
+    @posts = near_addresses.map { |address| address.profile.posts.last }.flatten
 
     respond_to do |format|
       format.json do |f|
         render json: {
+          posts: render_to_string(
+            partial: 'posts/post',
+            formats: :html,
+            layout: false,
+            locals: { posts: @posts }
+          ),
           city: @city,
           online_users: @online_users
         }
