@@ -19,9 +19,20 @@ class LocalDatasController < ApplicationController
     authorize @online_users
     @online_users = @online_users.to_a.count - 1
 
+    # posts
+
+    @posts = policy_scope(Post)
+    byebug
+
     respond_to do |format|
       format.json do |f|
         render json: {
+          posts: render_to_string(
+            partial: 'posts/post',
+            formats: :html,
+            layout: false,
+            locals: { posts: @posts }
+          ),
           city: @city,
           online_users: @online_users
         }
