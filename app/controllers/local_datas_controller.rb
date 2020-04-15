@@ -17,7 +17,6 @@ class LocalDatasController < ApplicationController
 
     near_addresses = Address.near([user_pos[:lat], user_pos[:lng]], 35).where.not(profile_id: nil)
     @online_users = near_addresses.joins(:profile).where("profiles.last_activity >= ?", DateTime.now.utc - 5.minutes)
-    byebug
     authorize @online_users
     @online_users = @online_users.to_a.count
     @online_users -= 1 if current_user
