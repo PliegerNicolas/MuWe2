@@ -163,6 +163,8 @@ ActiveRecord::Schema.define(version: 2020_04_04_075137) do
     t.string "last_name"
     t.date "birth_date"
     t.text "bio"
+    t.datetime "last_activity", default: "2020-04-15 18:15:03"
+    t.datetime "datetime", default: "2020-04-15 18:15:03"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
@@ -222,7 +224,6 @@ ActiveRecord::Schema.define(version: 2020_04_04_075137) do
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.string "first_name"
-    t.datetime "last_activity"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
