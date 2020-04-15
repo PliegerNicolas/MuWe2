@@ -20,6 +20,8 @@ module MuWe2
 
     config.action_view.embed_authenticity_token_in_remote_forms = true # Authenticity tokens ajax
 
+    config.active_record.default_timezone = :local
+    config.time_zone = 'UTC'
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

@@ -34,8 +34,9 @@ class ApplicationController < ActionController::Base
     # Last user activity
     return unless current_user
 
-    current_user.last_activity = DateTime.now
-    current_user.save
+    profile = current_user.profile
+    profile.last_activity = DateTime.now
+    profile.save
   end
 
   def skip_pundit?
