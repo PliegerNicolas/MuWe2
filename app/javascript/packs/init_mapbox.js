@@ -157,7 +157,9 @@ const getJams = () => {
     return response.json();
   })
   .then(function(data) {
-    document.getElementById("jams").innerHTML = data.jams;
+    data.jams.forEach((jam) => {
+      document.getElementById("jams").insertAdjacentHTML("beforeend", jam)
+    });
     setMarkers(data.jam_coords);
     flyToCity(data.city_coords);
   })
