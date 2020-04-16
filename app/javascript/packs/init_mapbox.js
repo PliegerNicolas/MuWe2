@@ -1,5 +1,6 @@
 import mapboxgl from 'mapbox-gl';
-// import 'mapbox-gl/dist/mapbox-gl.css';
+import Swiper from 'swiper';
+import jamSwiper from './swiper'
 
 let map;
 let initUserPos;
@@ -157,7 +158,8 @@ const getJams = () => {
     return response.json();
   })
   .then(function(data) {
-    document.getElementById("jams").innerHTML = data.jams;
+    jamSwiper.removeAllSlides();
+    jamSwiper.appendSlide(data.jams);
     setMarkers(data.jam_coords);
     flyToCity(data.city_coords);
   })

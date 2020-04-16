@@ -18,9 +18,22 @@
 }
 
 .jam-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 96%;
   margin: 0 12px;
-  overflow: hidden;
+
+  .swiper-container {
+    height: 80%;
+    overflow: hidden;
+  }
+
+  .arrow {
+    width: 30px;
+    height: 30px;
+    background-color: blue,
+  }
 }
 
 .map-wrapper {
