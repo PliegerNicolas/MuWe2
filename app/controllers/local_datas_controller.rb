@@ -23,17 +23,17 @@ class LocalDatasController < ApplicationController
 
     # posts
 
-    @posts = near_addresses.map { |address| address.profile.posts.last }.flatten
+    @posts = near_addresses.map { |address| address.profile.posts.last }.flatten.compact!
+
+    posts_html = []
+    @posts.each do |post|
+      posts_html << render_to_string(partial: 'posts/post', formats: :html, layout: false, locals: { post: post })
+    end
 
     respond_to do |format|
       format.json do |f|
         render json: {
-          posts: render_to_string(
-            partial: 'posts/post',
-            formats: :html,
-            layout: false,
-            locals: { posts: @posts }
-          ),
+          posts: posts_html,
           city: @city,
           online_users: @online_users
         }
