@@ -158,9 +158,8 @@ const getJams = () => {
     return response.json();
   })
   .then(function(data) {
-    data.jams.forEach((jam) => {
-      document.getElementById("jams").insertAdjacentHTML("beforeend", jam)
-    });
+    jamSwiper.removeAllSlides();
+    jamSwiper.appendSlide(data.jams);
     setMarkers(data.jam_coords);
     flyToCity(data.city_coords);
   })

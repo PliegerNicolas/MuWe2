@@ -3,17 +3,18 @@
     <div class="proximity-data">You and <p id="user-count">0</p> other signed-in Users are around <p id="city">...</p></div>
     <%= render 'searchs/filter_form' %>
   </div>
-  <div class="jam-wrapper wrapper">
-    <div id="jams">
-
+  <div id="jams" class="jam-wrapper wrapper">
+    <div class="swiper-button-prev jams-next"></div>
+    <div class="swiper-container">
+      <div class="swiper-wrapper"></div>
     </div>
+    <div class="swiper-button-next jams-previous"></div>
   </div>
   <div class="map-wrapper">
     <div class="big-map" id="map" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
 </div>
 <div class="posts-section">
-
 </div>
 
 <%= javascript_pack_tag 'init_mapbox' %>
