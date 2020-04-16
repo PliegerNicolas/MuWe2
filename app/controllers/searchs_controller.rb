@@ -91,9 +91,7 @@ class SearchsController < ApplicationController
             locals: { jams: @jams }
           ),
           jam_coords: @markers,
-          city_coords: @city_coords,
-          city: @city,
-          online_users: @online_users
+          city_coords: @city_coords
         }
       end
     end
