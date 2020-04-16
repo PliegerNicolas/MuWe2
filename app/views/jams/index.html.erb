@@ -4,8 +4,11 @@
     <%= render 'searchs/filter_form' %>
   </div>
   <div class="jam-wrapper wrapper">
-    <div id="jams">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
 
+      </div>
+      <div class="swiper-pagination"></div>
     </div>
   </div>
   <div class="map-wrapper">
@@ -16,5 +19,5 @@
 
 </div>
 
+<%= javascript_pack_tag 'jam_swiper' %>
 <%= javascript_pack_tag 'init_mapbox' %>
-<%= javascript_pack_tag 'swiper' %>
