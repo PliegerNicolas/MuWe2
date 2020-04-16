@@ -159,6 +159,7 @@ const getJams = () => {
     return response.json();
   })
   .then(function(data) {
+    jamSwiper.removeAllSlides();
     jamSwiper.appendSlide(data.jams);
     setMarkers(data.jam_coords);
     flyToCity(data.city_coords);
