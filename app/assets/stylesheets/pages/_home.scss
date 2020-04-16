@@ -20,18 +20,19 @@
 .jam-wrapper {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   height: 96%;
   margin: 0 12px;
 
   .swiper-container {
-    height: 80%;
+    height: 95%;
     overflow: hidden;
   }
 }
 
 .jams-next, .jams-previous {
-  margin: 20px 0;
+  margin: 8px 0;
   width: 0;
   height: 0;
   border-left: 50px solid transparent;
