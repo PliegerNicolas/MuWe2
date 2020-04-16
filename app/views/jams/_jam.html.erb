@@ -18,19 +18,16 @@
   </div>
   <div class="jam-card-right">
     <div class="jam-address">
-      <p><%= jam.address.street %>, <%= jam.address.city %>, <%= jam.address.country %></p>
+      <p><% if jam.address.street %><%= jam.address.street %><% else %>Outside of city<% end %>, <%= jam.address.city %>, <%= jam.address.country %></p>
     </div>
     <div class="jam-time">
-      <p>From <div class="time"><%= jam.start_time.strftime("%H:%M") %></div> until <div class="time"><%= jam.end_time.strftime("%H:%M") %></div></p>
+      <p>From </p><p class="muwe-text"><%= jam.start_time.strftime("%H:%M") %></p><p> until </p><p class="muwe-text"><%= jam.end_time.strftime("%H:%M") %></p>
     </div>
     <div class="jam-host">
-      <p>Host :</p>
-      <%= link_to profile_path(jam.user.id) do %>
-        <%= jam.user.first_name %>
-      <% end %>
+      <p>Host : </p><p class=""><%= link_to profile_path(jam.user.id) do %><%= jam.user.first_name %><% end %></p>
     </div>
     <div class="jam-participants">
-      <p>Participants : <%= jam.participants.count %>/<%= jam.max_participants %></p>
+      <p>Participants : </p><p class="muwe-text"><%= jam.participants.count %>/<%= jam.max_participants %></p>
     </div>
   </div>
 </div>
