@@ -43,13 +43,25 @@
 }
 
 .jam-card-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   height: 100%;
   width: 65%;
+  padding: 5% 0;
 }
 
-.jam-host, .jam-time {
+.jam-host, .jam-time, .jam-participants {
   @include flex-row;
   p {
     white-space: pre;
   }
+}
+
+.muwe-text {
+  color: $muwe-brand-green;
+}
+
+.jam-address {
+  @include flex-column;
 }
