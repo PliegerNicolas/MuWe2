@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
   def public_profile
     @profile = Profile.find(params[:id])
     authorize @profile
-    if @profile = current_user.profile
+    if @profile == current_user.profile
       redirect_to my_profile_path
     end
   end

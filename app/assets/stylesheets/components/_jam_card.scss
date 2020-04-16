@@ -46,3 +46,10 @@
   height: 100%;
   width: 65%;
 }
+
+.jam-host, .jam-time {
+  @include flex-row;
+  p {
+    white-space: pre;
+  }
+}
