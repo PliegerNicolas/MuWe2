@@ -79,17 +79,17 @@ class SearchsController < ApplicationController
       end
     end
 
+    jam_html = []
+    @jams.each do |jam|
+      jam_html << render_to_string(partial: 'jams/jam', formats: :html, layout: false, locals: { jam: jam })
+    end
+
     # End set markers
 
     respond_to do |format|
       format.json do |f|
         render json: {
-          jams: render_to_string(
-            partial: 'jams/jam',
-            formats: :html,
-            layout: false,
-            locals: { jams: @jams }
-          ),
+          jams: jam_html,
           jam_coords: @markers,
           city_coords: @city_coords
         }
