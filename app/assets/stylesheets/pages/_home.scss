@@ -28,12 +28,22 @@
     height: 80%;
     overflow: hidden;
   }
+}
 
-  .arrow {
-    width: 30px;
-    height: 30px;
-    background-color: blue,
-  }
+.jams-next, .jams-previous {
+  margin: 20px 0;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+}
+
+.jams-next {
+  border-bottom: 20px solid $muwe-brand-green;
+}
+
+.jams-previous {
+  border-top: 20px solid $muwe-brand-green;
 }
 
 .map-wrapper {
