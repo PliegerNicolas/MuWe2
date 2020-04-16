@@ -1,5 +1,6 @@
 import mapboxgl from 'mapbox-gl';
-// import 'mapbox-gl/dist/mapbox-gl.css';
+import Swiper from 'swiper';
+import jamSwiper from './swiper'
 
 let map;
 let initUserPos;
