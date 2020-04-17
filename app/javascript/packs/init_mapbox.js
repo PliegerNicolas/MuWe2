@@ -1,6 +1,6 @@
 import mapboxgl from 'mapbox-gl';
 import Swiper from 'swiper';
-import jamSwiper from './swiper'
+import { jamSwiper, localPostSwiper } from './swiper';
 
 let map;
 let initUserPos;
@@ -77,11 +77,11 @@ const setMarkers = (markers_pos) => {
   })
 }
 
-const userData = (data) => {
-  const user_count = document.getElementById("user-count");
-  const city = document.getElementById("city");
-  user_count.innerHTML = data.online_users;
-  city.innerHTML = data.city;
+const userData = (city, online_users) => {
+  const dc_user_count = document.getElementById("user-count");
+  const dc_city = document.getElementById("city");
+  dc_user_count.innerHTML = online_users;
+  dc_city.innerHTML = city;
 
 }
 
@@ -122,7 +122,9 @@ const getUserData = () => {
     return response.json();
   })
   .then(function(data) {
-    userData(data);
+    localPostSwiper.removeAllSlides();
+    localPostSwiper.appendSlide(data.local_posts);
+    userData(data.city, data.online_users);
   })
 }
 
