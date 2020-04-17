@@ -2,7 +2,10 @@ class LocalDatasController < ApplicationController
   skip_before_action :authenticate_user!
 
   def local_data
-    return unless cookies[:user_privacy_policy] == "true"
+    unless cookies[:user_privacy_policy] == "true"
+      skip_authorization
+      return
+    end
 
     user_pos = params[:local_data][:user_pos]
 
