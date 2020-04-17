@@ -21,19 +21,19 @@ class LocalDatasController < ApplicationController
     @online_users = @online_users.to_a.count
     @online_users -= 1 if current_user
 
-    # posts
+    # local posts
 
-    @posts = near_addresses.map { |address| address.profile.posts.last }.flatten.compact!
+    @local_posts = near_addresses.map { |address| address.profile.posts.last }.flatten.compact!
 
-    posts_html = []
-    @posts.each do |post|
-      posts_html << render_to_string(partial: 'posts/post', formats: :html, layout: false, locals: { post: post })
+    local_posts_html = []
+    @local_posts.each do |post|
+      local_posts_html << render_to_string(partial: 'posts/post', formats: :html, layout: false, locals: { post: post })
     end
 
     respond_to do |format|
       format.json do |f|
         render json: {
-          posts: posts_html,
+          local_posts: local_posts_html,
           city: @city,
           online_users: @online_users
         }

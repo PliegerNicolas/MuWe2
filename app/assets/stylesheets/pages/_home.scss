@@ -25,26 +25,10 @@
   height: 96%;
   margin: 0 12px;
 
-  .swiper-container {
+  .jam-swiper-container {
     height: 95%;
     overflow: hidden;
   }
-}
-
-.jams-next, .jams-previous {
-  margin: 8px 0;
-  width: 0;
-  height: 0;
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
-}
-
-.jams-next {
-  border-bottom: 20px solid $muwe-brand-green;
-}
-
-.jams-previous {
-  border-top: 20px solid $muwe-brand-green;
 }
 
 .map-wrapper {
@@ -59,4 +43,13 @@
 
 .posts-section {
   height: 83vh;
+}
+
+.local-post-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 96%;
+  margin: 0 12px;
 }

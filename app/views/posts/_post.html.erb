@@ -1,5 +1,5 @@
 <div class="post swiper-slide">
-  <%= post.profile.photo %>
+  <%= image_tag post.profile.photo, height: '30px', width: '30px', secure: true %>
   <%= post.profile.user.full_name %>
   <%= time_ago_in_words(post.created_at) %>
   <%= post.reference %>

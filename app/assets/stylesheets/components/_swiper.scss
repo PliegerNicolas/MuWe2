@@ -1,0 +1,37 @@
+.jams-next, .jams-previous {
+  margin: 8px 0;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+}
+
+.jams-next {
+  border-bottom: 20px solid $muwe-brand-green;
+}
+
+.jams-previous {
+  border-top: 20px solid $muwe-brand-green;
+}
+
+/* */
+
+.local-posts-next, .local-posts-previous {
+  margin: 8px 0;
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+
+  .local-post-swiper-container {
+    overflow: hidden;
+  }
+}
+
+.local-posts-next {
+  border-right: 20px solid $muwe-brand-green;
+}
+
+.local-posts-previous {
+  border-left: 20px solid $muwe-brand-green;
+}
