@@ -18,7 +18,7 @@
   </div>
   <div class="jam-card-right">
     <div class="jam-address">
-      <p><% if jam.address.street %><%= jam.address.street %><% else %>Outside of city<% end %>, <%= jam.address.city %>, <%= jam.address.country %></p>
+      <p><%= jam.address.street %>, <%= jam.address.city %>, <%= jam.address.country %></p>
     </div>
     <div class="jam-time">
       <p>From </p><p class="muwe-text"><%= jam.start_time.strftime("%H:%M") %></p><p> until </p><p class="muwe-text"><%= jam.end_time.strftime("%H:%M") %></p>
