@@ -1,19 +1,17 @@
 /* Jams */
 
 .jams-next, .jams-previous {
+  height: 35px;
   margin: 8px 0;
-  width: 0;
-  height: 0;
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
+  filter: drop-shadow( 2px 1px 3px rgba(18, 17, 18, .8));
 }
 
 .jams-next {
-  border-bottom: 20px solid $muwe-brand-green;
+
 }
 
 .jams-previous {
-  border-top: 20px solid $muwe-brand-green;
+  transform: rotate(180deg);
 }
 
 /* Posts */
@@ -23,17 +21,15 @@
 }
 
 .local-posts-next, .local-posts-previous {
+  height: 35px;
   margin: 8px 0;
-  width: 0;
-  height: 0;
-  border-top: 50px solid transparent;
-  border-bottom: 50px solid transparent;
+  filter: drop-shadow( 2px 1px 3px rgba(18, 17, 18, .8));
 }
 
 .local-posts-next {
-  border-right: 20px solid $muwe-brand-green;
+  transform: rotate(-90deg);
 }
 
 .local-posts-previous {
-  border-left: 20px solid $muwe-brand-green;
+  transform: rotate(90deg);
 }
