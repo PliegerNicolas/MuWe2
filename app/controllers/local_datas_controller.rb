@@ -26,7 +26,7 @@ class LocalDatasController < ApplicationController
 
     # local posts
 
-    @local_posts = near_addresses.map { |address| address.profile.posts.last }.flatten.compact!
+    @local_posts = near_addresses.map { |address| address.profile.posts.last }.compact.flatten
 
     local_posts_html = []
     Array(@local_posts).each do |post|

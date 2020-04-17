@@ -48,6 +48,8 @@
 
 .posts-section {
   height: 83vh;
+  @include flex-column;
+  align-items: center;
 }
 
 .local-post-wrapper {
@@ -55,6 +57,17 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  height: 96%;
+  height: 400px;
+  width: 80%;
   margin: 0 12px;
+}
+
+.local-post-swiper-container {
+  @include flex-row;
+  height: 95%;
+  width: 95%;
+}
+
+.swiper-wrapper {
+  @include flex-row;
 }

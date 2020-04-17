@@ -18,16 +18,16 @@
 
 /* Posts */
 
+.local-post-swiper-container {
+  overflow: hidden;
+}
+
 .local-posts-next, .local-posts-previous {
   margin: 8px 0;
   width: 0;
   height: 0;
   border-top: 50px solid transparent;
   border-bottom: 50px solid transparent;
-
-  .local-post-swiper-container {
-    overflow: hidden;
-  }
 }
 
 .local-posts-next {
