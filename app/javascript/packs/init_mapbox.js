@@ -13,7 +13,7 @@ const createMap = (pos) => {
     if(pos) {
       map = new mapboxgl.Map({ // Create mapbox map on user location
         container: 'map',
-        style: 'mapbox://styles/aetherys/ck94jskh00flb1insp26cczj8',
+        style: 'mapbox://styles/aetherys/ck94l1yqs22j91iq72yqscwxc',
         center: [pos.lng, pos.lat],
         zoom: 7,
         minZoom: 4,
@@ -22,7 +22,7 @@ const createMap = (pos) => {
     } else {
       map = new mapboxgl.Map({ // Create mapbox map on default location
         container: 'map',
-        style: 'mapbox://styles/aetherys/ck94jskh00flb1insp26cczj8',
+        style: 'mapbox://styles/aetherys/ck94l1yqs22j91iq72yqscwxc',
         center: [-7.8536599, 39.557191],
         zoom: 7,
         minZoom: 4,
