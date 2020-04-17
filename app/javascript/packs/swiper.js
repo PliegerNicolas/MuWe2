@@ -1,12 +1,12 @@
 import Swiper from 'swiper';
 
-var jamSwiper = new Swiper('.swiper-container', {
+var jamSwiper = new Swiper('.jam-swiper-container', {
   direction: 'vertical',
   watchOverflow: true,
   slidesPerView: 'auto',
   navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
+    nextEl: '.jam-swiper-button-next',
+    prevEl: '.jam-swiper-button-prev',
   },
 });
 
