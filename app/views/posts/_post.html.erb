@@ -1,7 +1,7 @@
 <div class="post swiper-slide">
   <%= image_tag post.profile.photo, height: '30px', width: '30px', secure: true %>
   <%= post.profile.user.full_name %>
-  <%= time_ago_in_words(post.created_at) %>
+  <%= time_ago_in_words(post.created_at) %> ago
   <%= post.reference %>
   <%= post.message %>
 </div>
