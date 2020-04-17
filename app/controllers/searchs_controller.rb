@@ -64,7 +64,7 @@ class SearchsController < ApplicationController
     # Set markers
 
     @markers = []
-    (@jams || []).each do |jam|
+    Array(@jams).each do |jam|
       if jam.address
         marker_image = helpers.asset_url('muwe-pin-ongoing.svg') if jam.status == 'ongoing'
         marker_image = helpers.asset_url('muwe-pin-planned.svg') if jam.status == 'planned'
