@@ -106,26 +106,30 @@ const filter = () => {
 }
 
 const getUserData = () => {
-  const token = document.getElementsByName("csrf-token")[0].content
-  fetch(window.location.origin + "/local_data", {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json',
-      'X-CSRF-Token': token
-    },
-    body: JSON.stringify({
-      user_pos: userPos,
-    }),
-    credentials: "same-origin"
-  })
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(data) {
-    localPostSwiper.removeAllSlides();
-    localPostSwiper.appendSlide(data.local_posts);
-    userData(data.city, data.online_users);
-  })
+  const docCookie = document.cookie
+  const cookieValue = docCookie.split("=")[1];
+  if(cookieValue == "true") {
+    const token = document.getElementsByName("csrf-token")[0].content
+    fetch(window.location.origin + "/local_data", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': token
+      },
+      body: JSON.stringify({
+        user_pos: userPos,
+      }),
+      credentials: "same-origin"
+    })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      localPostSwiper.removeAllSlides();
+      localPostSwiper.appendSlide(data.local_posts);
+      userData(data.city, data.online_users);
+    })
+  }
 }
 
 const getJams = () => {

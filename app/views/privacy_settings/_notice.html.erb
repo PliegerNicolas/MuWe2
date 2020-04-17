@@ -1,6 +1,6 @@
 <% unless @user_privacy_policy == 'true' || @user_privacy_policy == 'false' || @user_privacy_policy == 'closed' %>
   <div id="notice">
-    <p>Yo this is a notice for you to give permission to saving your location in DB</p>
+    <p>MuWe uses cookies to deliver and improve the website experience. See our <a href="#">cookie policy</a> for further details on how we use cookies and how to change your cookie settings.</p>
     <%= link_to "Accept", accept_privacy_cookie_path, remote: true %>
     <%= link_to "Close", close_privacy_cookie_notice_path, remote: true %>
   </div>
