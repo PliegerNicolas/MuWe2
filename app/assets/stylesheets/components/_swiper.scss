@@ -22,6 +22,11 @@
   height: 0;
   border-top: 50px solid transparent;
   border-bottom: 50px solid transparent;
+
+  .local-post-swiper-container {
+    height: 95%;
+    overflow: hidden;
+  }
 }
 
 .local-posts-next {

@@ -44,3 +44,12 @@
 .posts-section {
   height: 83vh;
 }
+
+.local-post-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 96%;
+  margin: 0 12px;
+}
