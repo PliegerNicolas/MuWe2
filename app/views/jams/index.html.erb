@@ -1,16 +1,16 @@
 <div class="map-section">
 
   <div class="filter-wrapper wrapper">
-    <div class="proximity-data">You and <p id="user-count">0</p> other signed-in Users are around <p id="city">...</p></div>
+    <div id="proximity-data">You and <p>?</p> other signed-in Users are around <p>?</p>.</div>
     <%= render 'searchs/filter_form' %>
   </div>
 
   <div id="jams" class="jam-wrapper wrapper">
-    <div class="jam-swiper-button-prev jams-next"></div>
+    <%= image_tag "arrow.svg", class: "jam-swiper-button-prev jams-next" %>
     <div class="jam-swiper-container">
       <div class="swiper-wrapper"></div>
     </div>
-    <div class="jam-swiper-button-next jams-previous"></div>
+    <%= image_tag "arrow.svg", class: "jam-swiper-button-next jams-previous" %>
   </div>
 
   <div class="map-wrapper">
@@ -21,11 +21,11 @@
 
 <div class="posts-section">
   <div id="local-posts" class="local-post-wrapper wrapper">
-    <div class="local-post-swiper-button-prev local-posts-next"></div>
+    <%= image_tag "arrow.svg", class: "local-post-swiper-button-prev local-posts-next" %>
     <div class="local-post-swiper-container">
       <div class="swiper-wrapper"></div>
     </div>
-    <div class="local-post-swiper-button-next local-posts-previous"></div>
+    <%= image_tag "arrow.svg", class: "local-post-swiper-button-next local-posts-previous" %>
   </div>
 </div>
 
