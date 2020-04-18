@@ -5,6 +5,22 @@
     <%= @profile.user.full_name %>
     <%= age(@profile.birth_date) %>
   </div>
+  <div class="profile-spec">
+    <div class="bio">
+      <%= @profile.bio %>
+    </div>
+    <div class="profile-data">
+      <%= average_rating(@profile)  %>
+      <%= @profile.user.jams.where(status: "finished").count %>
+      <%= @profile.user.jam_participations.count %>
+      <%= @profile.user.followers.count %>
+      <%= @profile.user.friends.count %>
+    </div>
+    <div class="profile-music">
+      <%= @profile.user.instruments %>
+      <%= @profile.user.music_styles %>
+    </div>
+  </div>
 </div>
 <div class="posts-section section">
 
