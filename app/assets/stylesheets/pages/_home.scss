@@ -16,8 +16,13 @@
 .filter-wrapper {
   height: 96%;
   #proximity-data {
+    p {
+      display: inline;
+      color: $muwe-pure-white;
+    }
     text-align: center;
     margin: 0 20%;
+    color: $muwe-brand-green;
   }
 }
 
