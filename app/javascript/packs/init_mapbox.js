@@ -79,7 +79,7 @@ const setMarkers = (markers_pos) => {
 
 const userData = (city, online_users) => {
   const proximity_data = document.getElementById("proximity-data")
-  const string = `You and ${online_users ? online_users : '?'} other signed-in Users are around ${city ? city : '?'}.`
+  const string = `You and ${online_users ? online_users : '0'} other signed-in Users are around ${city ? city : '?'}.`
   proximity_data.innerHTML = string
 }
 
