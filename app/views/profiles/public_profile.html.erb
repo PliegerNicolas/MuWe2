@@ -2,6 +2,7 @@
   <%= image_tag @profile.banner %>
   <div class="banner-separator"></div>
   <div class="profile-main-box">
+    <%= image_tag @profile.photo %>
     <%= @profile.user.full_name %>
     <%= age(@profile.birth_date) %>
   </div>
