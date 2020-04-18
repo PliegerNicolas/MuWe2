@@ -16,13 +16,15 @@
 .filter-wrapper {
   height: 96%;
   #proximity-data {
+    font-size: 22px;
+    text-align: center;
+    margin: 0 20%;
+    color: $muwe-brand-green;
+    font-size: 1.4rem;
     p {
       display: inline;
       color: $muwe-pure-white;
     }
-    text-align: center;
-    margin: 0 20%;
-    color: $muwe-brand-green;
   }
 }
 
