@@ -78,11 +78,9 @@ const setMarkers = (markers_pos) => {
 }
 
 const userData = (city, online_users) => {
-  const dc_user_count = document.getElementById("user-count");
-  const dc_city = document.getElementById("city");
-  dc_user_count.innerHTML = online_users;
-  dc_city.innerHTML = city;
-
+  const proximity_data = document.getElementById("proximity-data")
+  const string = `You and ${online_users ? online_users : '?'} other signed-in Users are around ${city ? city : '?'}.`
+  proximity_data.innerHTML = string
 }
 
 const flyToCity = (city_coords) => {
